@@ -29,6 +29,10 @@
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Log In</button>
                 <hr>
+                <a href="{{ url('auth/google') }}" class="btn btn-danger btn-block">
+    <strong>Login dengan Google</strong>
+</a>
+
                 <p class="text-center">Belum punya akun? <a href="{{route('register')}}">Register</a> sekarang!</p>
             </form>
         </div>

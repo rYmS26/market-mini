@@ -41,6 +41,10 @@
                 </div>
                 <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-user"></i> Register</button>
                 <hr>
+                <a href="{{ url('auth/google') }}" class="btn btn-danger btn-block">
+    <strong>Login dengan Google</strong>
+</a>
+
                 <p class="text-center">Sudah punya akun silahkan <a href="{{route('login')}}">Login Disini!</a></p>
             </form>
         </div>
