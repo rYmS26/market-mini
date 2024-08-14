@@ -1,13 +1,14 @@
 <?php
   
-namespace App\Http\Controllers;
+  namespace App\Http\Controllers;
+
+  use Illuminate\Http\Request;
   
-use Illuminate\Http\Request;
+  class HomeController extends Controller
+  {
+      public function index()
+      {
+          return view('home'); // Halaman home yang dapat diakses tanpa login
+      }
+  }
   
-class HomeController extends Controller
-{
-    public function index()
-    {
-        return view('home');
-    }
-}

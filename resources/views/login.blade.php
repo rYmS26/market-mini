@@ -10,7 +10,7 @@
 <body>
     <div class="container"><br>
         <div class="col-md-4 col-md-offset-4">
-            <h2 class="text-center"><b>ANISA</b><br>Aplikasi Nilai Santri</h3>
+            <h2 class="text-center"><b><a href="{{route('home')}}">ANISA</a></b><br>Aplikasi Nilai Santri</h3>
             <hr>
             @if(session('error'))
             <div class="alert alert-danger">
@@ -30,8 +30,8 @@
                 <button type="submit" class="btn btn-primary btn-block">Log In</button>
                 <hr>
                 <a href="{{ url('auth/google') }}" class="btn btn-danger btn-block">
-    <strong>Login dengan Google</strong>
-</a>
+                    <strong>Login dengan Google</strong>
+                </a>
 
                 <p class="text-center">Belum punya akun? <a href="{{route('register')}}">Register</a> sekarang!</p>
             </form>

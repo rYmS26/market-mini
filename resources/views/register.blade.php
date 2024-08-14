@@ -17,7 +17,7 @@
                 {{session('message')}}
             </div>
             @endif
-            <form action="{{route('actionregister')}}" method="post">
+            <form action="{{ route('actionregister') }}" method="post">
             @csrf
                 <div class="form-group">
                     <label><i class="fa fa-envelope"></i> Email</label>
@@ -42,8 +42,8 @@
                 <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-user"></i> Register</button>
                 <hr>
                 <a href="{{ url('auth/google') }}" class="btn btn-danger btn-block">
-    <strong>Login dengan Google</strong>
-</a>
+                    <strong>Login dengan Google</strong>
+                </a>
 
                 <p class="text-center">Sudah punya akun silahkan <a href="{{route('login')}}">Login Disini!</a></p>
             </form>

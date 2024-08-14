@@ -10,31 +10,30 @@ class LoginController extends Controller
 {
     public function login()
     {
+        // Jika sudah login, arahkan ke home
         if (Auth::check()) {
-            return view('home');
-        } else {
-            return view('login');
+            return redirect()->route('home');
         }
+
+        // Tampilkan halaman login jika belum login
+        return view('login');
     }
 
     public function actionlogin(Request $request)
     {
-        $data = [
-            'email' => $request->input('email'),
-            'password' => $request->input('password'),
-        ];
+        $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($data)) {
-            return redirect('home');
+        if (Auth::attempt($credentials)) {
+            return redirect()->route('home');
         } else {
             Session::flash('error', 'Email atau Password Salah');
-            return redirect('/');
+            return redirect()->route('login');
         }
     }
 
     public function actionlogout()
     {
         Auth::logout();
-        return redirect('/');
+        return redirect()->route('home'); // Arahkan ke halaman home setelah logout
     }
 }

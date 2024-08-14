@@ -31,4 +31,5 @@
     @include('card')
 
 </div>
+
 @endsection
