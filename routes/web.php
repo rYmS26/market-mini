@@ -5,6 +5,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 
 // Route utama mengarah ke halaman home
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -25,3 +27,5 @@ Route::post('register/action', [RegisterController::class, 'actionregister'])->n
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
 
+Route::get('product', [ProductController::class, 'product'])->name('product');
+Route::get('profile', [ProfileController::class, 'profile'])->name('profile');

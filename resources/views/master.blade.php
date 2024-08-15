@@ -48,8 +48,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Product</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('home')}}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('product')}}">Product</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Company</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
                     @if(Auth::check())
@@ -58,7 +58,7 @@
                                 Welcome, {{ Auth::user()->name }}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="{{route('profile')}}">Profile</a></li>
                                 <li><a class="dropdown-item" href="{{ route('actionlogout') }}">Logout</a></li>
                             </ul>
                         </li>

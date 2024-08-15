@@ -44,7 +44,8 @@ class GoogleController extends Controller
                     'email' => $user->email,
                     'username' => Str::slug($user->name),  // Username can be the same for different users
                     'google_id' => $user->id,
-                    'password' => encrypt('my-google')
+                    'password' => encrypt('my-google'),
+                    'role' => 'guest'
                 ]);
 
                 Auth::login($newUser);
