@@ -2,13 +2,16 @@
   
   namespace App\Http\Controllers;
 
-  use Illuminate\Http\Request;
-  
-  class HomeController extends Controller
-  {
-      public function index()
-      {
-          return view('home'); // Halaman home yang dapat diakses tanpa login
-      }
-  }
-  
+use App\Models\Product; // Import the Product model
+use Illuminate\Http\Request;
+
+class HomeController extends Controller
+{
+    public function index()
+    {
+        // Fetch the top 3 products based on some criteria, e.g., most recent
+        $topProducts = Product::orderBy('created_at', 'desc')->take(3)->get();
+        
+        return view('home', compact('topProducts'));
+    }
+}

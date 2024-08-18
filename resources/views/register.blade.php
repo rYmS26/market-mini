@@ -84,6 +84,7 @@ body.my-login-page {
 
 .my-login-page .card.fat {
 	padding: 10px;
+	margin-top: 40px;
 }
 
 .my-login-page .card .card-title {
@@ -173,6 +174,9 @@ body.my-login-page {
 									<button type="submit" class="btn btn-primary btn-block">
 										Register
 									</button>
+									<a href="{{ url('auth/google') }}" class="btn btn-danger btn-block">
+                    					<strong>Register dengan Google</strong>
+                					</a>
 								</div>
 								<div class="mt-4 text-center">
 									Already have an account? <a href="{{route('login')}}">Login</a>

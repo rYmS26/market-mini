@@ -84,6 +84,7 @@ body.my-login-page {
 
 .my-login-page .card.fat {
 	padding: 10px;
+	margin-top: 90px;
 }
 
 .my-login-page .card .card-title {
@@ -124,6 +125,23 @@ body.my-login-page {
 		padding: 15px;
 	}
 }
+.teks {
+    display: flex;
+    justify-content: space-between; /* Mengatur posisi elemen secara horizontal */
+    align-items: center; /* Menyelaraskan elemen secara vertikal */
+    width: 100%;
+}
+
+.login-teks {
+    margin: 0;
+    font-size: 1.2em; /* Ubah ukuran font sesuai keinginan */
+}
+
+.home-teks {
+    margin: 0;
+    font-size: 1.2em; /* Ubah ukuran font sesuai keinginan */
+}
+
     </style>
 </head>
 
@@ -141,7 +159,10 @@ body.my-login-page {
             @csrf
 					<div class="card fat">
 						<div class="card-body">
-							<h4 class="card-title">Login</h4>
+						<div class="teks">
+    						<h4 class="login-teks">Login</h4>
+    						<h4 class="home-teks"><a href="{{route('home')}}">Home</a></h4>
+						</div>
 							<form method="POST" class="my-login-validation" novalidate="">
 								<div class="form-group">
 									<label for="email">E-Mail Address</label>
@@ -174,6 +195,9 @@ body.my-login-page {
 									<button type="submit" class="btn btn-primary btn-block">
 										Login
 									</button>
+									<a href="{{ url('auth/google') }}" class="btn btn-danger btn-block">
+                    					<strong>Login dengan Google</strong>
+                					</a>
 								</div>
 								<div class="mt-4 text-center">
 									Don't have an account? <a href="{{route('register')}}">Create One</a>

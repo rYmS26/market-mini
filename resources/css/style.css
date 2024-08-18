@@ -1,0 +1,6 @@
+.product-img {
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    width: 100%; /* Make the image width 100% of the card */
+    height: 200px; /* Set a fixed height */
+    background-color: #f8f9fa; /* Optional: Background color if the image is missing */
+}
