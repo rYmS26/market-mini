@@ -49,7 +49,7 @@
                             <h5 class="card-title">{{ $product->name }}</h5>
                             <p class="card-text">{{ $product->description }}</p>
                             <p class="card-text"><strong>${{ $product->price }}</strong></p>
-                            <a href="{{ route('products.show', $product->id) }}" class="btn btn-primary">View</a>
+                            <a href="{{ route('products.show', $product->id) }}" class="btn" style="background-color: #179BAE; color: white;">View</a>
 
                             @if(Auth::check())
                                 <!-- Edit and Delete buttons only visible to authenticated users -->

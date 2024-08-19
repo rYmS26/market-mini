@@ -135,12 +135,26 @@ body.my-login-page {
 					<div class="card fat">
 						<div class="card-body">
 							<h4 class="card-title">Register</h4>
-							<form method="POST" class="my-login-validation" novalidate="">
+							@if(session('message'))
+							<div class="alert alert-success">
+								{{session('message')}}
+							</div>
+							@endif
+							<form action="{{ route('actionregister') }}" method="post">
+							@csrf
 								<div class="form-group">
 									<label for="name">Name</label>
 									<input id="name" type="text" class="form-control" name="name" required autofocus>
 									<div class="invalid-feedback">
 										What's your name?
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="username">username</label>
+									<input id="username" type="text" class="form-control" name="username" required autofocus>
+									<div class="invalid-feedback">
+										What's your username?
 									</div>
 								</div>
 
@@ -161,6 +175,11 @@ body.my-login-page {
 								</div>
 
 								<div class="form-group">
+									<label><i class="fa fa-address-book"></i> Role</label>
+									<input type="text" name="role" class="form-control" value="Guest" readonly>
+								</div>
+
+								<div class="form-group">
 									<div class="custom-checkbox custom-control">
 										<input type="checkbox" name="agree" id="agree" class="custom-control-input" required="">
 										<label for="agree" class="custom-control-label">I agree to the <a href="#">Terms and Conditions</a></label>
@@ -171,17 +190,17 @@ body.my-login-page {
 								</div>
 
 								<div class="form-group m-0">
-									<button type="submit" class="btn btn-primary btn-block">
+									<button type="submit" class="btn btn-primary btn-block" style="color: white; background-color: #179BAE;">
 										Register
 									</button>
+								</form>
 									<a href="{{ url('auth/google') }}" class="btn btn-danger btn-block">
                     					<strong>Register dengan Google</strong>
                 					</a>
 								</div>
 								<div class="mt-4 text-center">
-									Already have an account? <a href="{{route('login')}}">Login</a>
+									Already have an account? <a href="{{route('login')}}" style="color: #179BAE;">Login</a>
 								</div>
-							</form>
 						</div>
 					</div>
 					<div class="footer">
