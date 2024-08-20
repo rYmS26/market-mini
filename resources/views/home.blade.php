@@ -21,15 +21,30 @@
 
     <!-- Section for Product, Features, and Pricing -->
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 50vh; padding-top: 20px; padding-bottom: 20px;">
-    <div class="text-center">
-        <h3>Lorem Ipsum</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+        <div class="text-center">
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.</p>
+        </div>
+    </div>
+
+    <!-- Section to include the top 3 product cards -->
+    <div class="container">
+        <h2 class="text-center mb-4">Top 3 Products</h2>
+        <div class="row">
+            @foreach($topProducts as $product)
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{{ $product->photo_url }}" class="card-img-top product-img" alt="{{ $product->name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $product->name }}</h5>
+                        <p class="card-text">{{ $product->description }}</p>
+                        <p class="card-text"><strong>${{ $product->price }}</strong></p>
+                        <a href="{{ route('products.show', $product->id) }}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
     </div>
 </div>
-
-    <!-- Section to include the product cards -->
-    @include('card')
-
-</div>
-
 @endsection
