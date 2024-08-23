@@ -4,3 +4,20 @@
     height: 200px; /* Set a fixed height */
     background-color: #f8f9fa; /* Optional: Background color if the image is missing */
 }
+/* public/css/styles.css */
+.card {
+    position: relative;
+    overflow: hidden;
+}
+
+.card .btn-outline-primary {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover .btn-outline-primary {
+    opacity: 1;
+}

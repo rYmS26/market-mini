@@ -47,7 +47,7 @@
 	<meta name="author" content="Kodinger">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>My Login Page</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" integrity="sha384-D4IoOf6b8VTEo5KNt1FnFlIHGIVGI5l2wPYi6Y+3X/bBu1g9DXvS4iyE3iItHMjs" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<style>
         html,body {
 	height: 100%;
@@ -161,7 +161,7 @@ body.my-login-page {
 						<div class="card-body">
 						<div class="teks">
     						<h4 class="login-teks">Login</h4>
-    						<h4 class="home-teks"><a href="{{route('home')}}">Home</a></h4>
+    						<h4 class="home-teks"><a href="{{route('home')}}" style="color:  #179BAE;">Home</a></h4>
 						</div>
 							<form method="POST" class="my-login-validation" novalidate="">
 								<div class="form-group">
@@ -174,7 +174,7 @@ body.my-login-page {
 
 								<div class="form-group">
 									<label for="password">Password
-										<a href="forgot.html" class="float-right">
+										<a href="forgot.html" class="float-right" style="color:  #179BAE;">
 											Forgot Password?
 										</a>
 									</label>
@@ -192,7 +192,7 @@ body.my-login-page {
 								</div>
 
 								<div class="form-group m-0">
-									<button type="submit" class="btn btn-primary btn-block">
+									<button type="submit" class="btn btn-block" style="background-color: #179BAE; color: white;">
 										Login
 									</button>
 									<a href="{{ url('auth/google') }}" class="btn btn-danger btn-block">
@@ -200,7 +200,7 @@ body.my-login-page {
                 					</a>
 								</div>
 								<div class="mt-4 text-center">
-									Don't have an account? <a href="{{route('register')}}">Create One</a>
+									Don't have an account? <a href="{{route('register')}}" style="color:  #179BAE;">Create One</a>
 								</div>
 							</form>
 						</div>
@@ -214,8 +214,8 @@ body.my-login-page {
 	</section>
 
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha384-SgWQX71pbKZ07bMycZTAwQFcxB6JCMzhVDgMDop3HYGPGb5xpR3apEy99Dx86uYH" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-DAsBR0AHcfe/V5zA3FdvYX3t8RoGaTy7CENrq9l5Al32rdU6OTc0AOMmUsZzsjZn" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-h4MUkkV3ZNUcAE28zTX5QJQ3ng/ABXHhzHQ7JS5wWCDuzKT2Bz7X0GQUbS9fEYYx" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-DAsBR0AHcfe/V5zA3FdvYX3t8RoGaTy7CENrq9l5Al32rdU6OTc0AOMmUsZzsjZn" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-h4MUkkV3ZNUcAE28zTX5QJQ3ng/ABXHhzHQ7JS5wWCDuzKT2Bz7X0GQUbS9fEYYx" crossorigin="anonymous"></script>
 	<script src="js/my-login.js"></script>
 </body>
 </html>

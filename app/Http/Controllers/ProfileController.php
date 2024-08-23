@@ -37,6 +37,6 @@ class ProfileController extends Controller
         $user->save();
 
         // Menambahkan flash message
-        return redirect()->route('profile.show')->with('success', 'Profile updated successfully!');
+        return redirect()->route('profile')->with('success', 'Profile updated successfully!');
     }
 }

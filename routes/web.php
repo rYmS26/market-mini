@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductReportController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\CartController;
 
 // Route utama mengarah ke halaman home
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -59,3 +60,7 @@ Route::get('/buy/{id}', [PurchaseController::class, 'buy'])->name('buy.product')
 Route::post('/process-payment', [PurchaseController::class, 'processPayment'])->name('process.payment');
 Route::get('/payment-success', [PurchaseController::class, 'paymentSuccess'])->name('payment.success');
 Route::get('/midtrans/checkout', [PurchaseController::class, 'midtransCheckout'])->name('midtrans.checkout');
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
