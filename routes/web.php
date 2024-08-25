@@ -6,7 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ProductReportController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\CartController;
@@ -50,17 +50,25 @@ Route::put('/products/{id}', [ProductController::class, 'update'])->name('produc
 
 // Delete a product
 Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
-Route::get('profile', [ProfileController::class, 'show'])->name('profile');
-Route::post('profile/update', [ProfileController::class, 'update'])->name('profile.update');
+Route::get('profile', [ProfilController::class, 'show'])->name('profile');
+Route::post('profile/update', [ProfilController::class, 'update'])->name('profile.update');
 
 Route::get('/product-report', [ProductReportController::class, 'index'])->name('product.report');
 Route::get('/product-report/pdf', [ProductReportController::class, 'downloadPDF'])->name('product.report.pdf');
 
-Route::get('/buy/{id}', [PurchaseController::class, 'buy'])->name('buy.product');
-Route::post('/process-payment', [PurchaseController::class, 'processPayment'])->name('process.payment');
-Route::get('/payment-success', [PurchaseController::class, 'paymentSuccess'])->name('payment.success');
-Route::get('/midtrans/checkout', [PurchaseController::class, 'midtransCheckout'])->name('midtrans.checkout');
-
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/cart/update', [CartController::class, 'updateQuantity'])->name('cart.update');
+
+// Route to view the product details and initiate purchase
+Route::get('/buy/{id}', [PurchaseController::class, 'buy'])->name('buy.product');
+
+// Route to handle payment processing (POST request)
+Route::post('/process-payment', [PurchaseController::class, 'processPayment'])->name('process.payment');
+
+// Route to show a success message after payment
+Route::get('/payment-success', [PurchaseController::class, 'paymentSuccess'])->name('payment.success');
+
+// Optional route for payment failure handling
+Route::get('/payment-failed', [PurchaseController::class, 'paymentFailed'])->name('payment.failed');

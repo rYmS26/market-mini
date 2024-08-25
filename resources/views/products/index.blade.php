@@ -42,39 +42,102 @@
             <div class="row">
                 @foreach ($products as $product)
                 <div class="col-md-4">
-                    <div class="card mb-4 position-relative">
-                        <img src="{{ $product->photo_url }}" class="card-img-top product-img" alt="{{ $product->name }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $product->name }}</h5>
-                            <p class="card-text">{{ $product->description }}</p>
-                            <p class="card-text"><strong>${{ $product->price }}</strong></p>
-                            <a href="{{ route('products.show', $product->id) }}" class="btn" style="background-color: #179BAE; color: white;">View</a>
+                <div class="card mb-4 position-relative">
+    <img src="{{ $product->photo_url }}" class="card-img-top product-img" alt="{{ $product->name }}">
+    <div class="card-body">
+        <h5 class="card-title">{{ $product->name }}</h5>
+        <p class="card-text">{{ $product->description }}</p>
+        <p class="card-text"><strong>${{ $product->price }}</strong></p>
+        <a href="{{ route('products.show', $product->id) }}" class="btn" style="background-color: #179BAE; color: white;">View</a>
 
-                            @if(Auth::check())
-                                <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning">Edit</a>
-                                <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
-                            @endif
-                        </div>
-                        <div class="position-absolute top-0 end-0 p-3">
-                            <form action="{{ route('cart.add') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="id" value="{{ $product->id }}">
-                                <button type="submit" class="btn btn-outline-primary" title="Add to Cart">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                                        <path d="M5.5 0a.5.5 0 0 1 .5.5V1h4V.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5V1h1a.5.5 0 0 1 .485.379l1 5A.5.5 0 0 1 16 6H2.665l-.62-3.095a.5.5 0 0 1-.074-.293L.507 1.325A.5.5 0 0 1 1 1h1a.5.5 0 0 1 .485.379l.38 1.903H5.5a.5.5 0 0 1 .485.379l1 5A.5.5 0 0 1 7 8H16a.5.5 0 0 1 .485.379l1 5a.5.5 0 0 1-.485.621H5.5a.5.5 0 0 1-.485-.379L5.5 0zm6 11a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm-4 1a1 1 0 1 0 2 0 1 1 0 0 0-2 0zM11.5 12a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm4 1a1 1 0 1 0-2 0 1 1 0 0 0 2 0z"/>
-                                    </svg>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+        @if(Auth::check())
+            <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning">Edit</a>
+            <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        @endif
+    </div>
+    <div class="cart-icon-container">
+    <form action="{{ route('cart.add') }}" method="POST" style="display: inline;">
+        @csrf
+        <input type="hidden" name="id" value="{{ $product->id }}">
+        <button type="submit" class="cart-icon" title="Add to Cart">
+            <i class="fas fa-shopping-cart"></i>
+        </button>
+    </form>
+</div>
+         
+</div>
+
+</div>
+
                 @endforeach
             </div>
         </div>
     </div>
 </div>
+<style>
+   .card {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: relative; /* Ensure the card is positioned relatively */
+    }
+
+    .product-img {
+        width: 100%;
+        height: auto;
+        object-fit: cover; /* Ensure the image covers the card area */
+    }
+
+    .cart-icon-container {
+        position: absolute;
+        top: 10px; /* Adjust as needed */
+        right: 10px; /* Adjust as needed */
+        z-index: 100; /* Ensure the cart icon is above other content */
+    }
+
+    .cart-icon-container button {
+        background: none;
+        border: none;
+        color: #007bff; /* Adjust color as needed */
+        font-size: 1.5rem; /* Adjust size as needed */
+    }
+
+    .cart-icon-container svg {
+        width: 24px; /* Adjust size as needed */
+        height: 24px; /* Adjust size as needed */
+    }
+    .cart-icon i {
+        font-size: 24px;
+        color: #000000;
+        transition: color 0.3s ease;
+    }
+
+    .cart-icon:hover i {
+        color: #179BAE;
+    }
+
+    .card {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card:hover {
+        transform: scale(0.95); /* Shrink the card slightly on hover */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+    }
+
+    .product-img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+</style>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
 @endsection

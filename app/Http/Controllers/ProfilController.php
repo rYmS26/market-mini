@@ -5,7 +5,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ProfileController extends Controller
+class ProfilController extends Controller
 {
     public function show()
     {
@@ -20,23 +20,22 @@ class ProfileController extends Controller
 
     public function update(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'birthdate' => 'required|date',
             'phone' => 'required|string|max:20',
             'address' => 'required|string|max:255',
         ]);
-
+    
         $user = Auth::user();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->birthdate = $request->birthdate;
-        $user->phone = $request->phone;
-        $user->address = $request->address;
-        $user->save();
-
-        // Menambahkan flash message
+    
+        if (!$user) {
+            return redirect()->route('login')->withErrors('User not authenticated.');
+        }
+    
+        $user->update($validatedData);
+    
         return redirect()->route('profile')->with('success', 'Profile updated successfully!');
     }
-}
+}    
