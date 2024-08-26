@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b0394325f8fb91a60a030b090da6bbe8",
+    "content-hash": "f23221823de6c66502b4fd08c2300d99",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -3909,6 +3909,83 @@
                 "source": "https://github.com/MyIntervals/PHP-CSS-Parser/tree/v8.6.0"
             },
             "time": "2024-07-01T07:33:21+00:00"
+        },
+        {
+            "name": "secondtruth/startmin",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/secondtruth/startmin.git",
+                "reference": "d1778e71353eb815f66515e8324d950b97a2b0ab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/secondtruth/startmin/zipball/d1778e71353eb815f66515e8324d950b97a2b0ab",
+                "reference": "d1778e71353eb815f66515e8324d950b97a2b0ab",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Neff",
+                    "email": "christian.neff@gmail.com",
+                    "homepage": "https://secondtruth.de",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Ed Preston",
+                    "email": "hello@prestonsoft.com",
+                    "homepage": "https://prestonsoft.com",
+                    "role": "Contributor"
+                },
+                {
+                    "name": "David Miller",
+                    "email": "hello@davidmiller.io",
+                    "homepage": "https://davidmiller.io",
+                    "role": "Original Author"
+                }
+            ],
+            "description": "An admin dashboard template for Bootstrap",
+            "homepage": "http://www.secondtruth.de",
+            "keywords": [
+                "admin",
+                "backend",
+                "dashboard",
+                "template",
+                "theme",
+                "web"
+            ],
+            "support": {
+                "issues": "https://github.com/secondtruth/startmin/issues",
+                "source": "https://github.com/secondtruth/startmin/tree/v1.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/secondtruth",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://ko-fi.com/secondtruth",
+                    "type": "ko_fi"
+                },
+                {
+                    "url": "https://liberapay.com/secondtruth",
+                    "type": "liberapay"
+                },
+                {
+                    "url": "https://opencollective.com/secondtruth",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://www.patreon.com/secondtruth",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2023-05-07T15:13:53+00:00"
         },
         {
             "name": "stripe/stripe-php",
