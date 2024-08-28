@@ -12,9 +12,9 @@
                     <div class="page-caption">
                     @if(Auth::check())
                     <h1 class="page-title" style="color: #F7F7F8;">Welcome, {{ Auth::user()->name }}</h1>
-                    <p style="text-align: center; color: #F7F7F8;">Market Mini Indonesia</p>
+                    <p style="text-align: center; color: #F7F7F8;"><a href="{{route('products.index')}}" style=" text-decoration: none; color: white;"><button style="">Buy Now</button></a></p>
                     @else
-                    <p style="text-align: center; color: #F7F7F8;">Market Mini Indonesia</p>
+                    <p style="text-align: center; color: #F7F7F8;"><a href="{{route('products.index')}}">Buy now</a></p>
                     @endif
                     </div>
                 </div>
@@ -64,14 +64,13 @@
     <h2 class="text-center mb-4" style="margin-top: 20px; color: #179BAE;" >Top 3 Products</h2>
     <div class="row">
         @foreach($topProducts as $product)
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card mb-4">
                 <img src="{{ $product->photo_url }}" class="card-img-top product-img" alt="{{ $product->name }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ $product->name }}</h5>
                     <p class="card-text">{{ $product->description }}</p>
                     <p class="card-text"><strong>${{ $product->price }}</strong></p>
-                    <a href="{{ route('products.show', $product->id) }}" class="btn" style="background-color: #179BAE; color: white;">View Details</a>
                 </div>
             </div>
         </div>
@@ -146,10 +145,11 @@ p:last-child { margin: 0px; }
 ul, ol { }
 a { text-decoration: none; color: #8d8f90; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; transition: all 0.3s; }
 a:focus, a:hover { text-decoration: none; color: #f85759; }
-
-
-
-.page-header { background: url({{asset('storage/photos/mart.png')}})no-repeat; position: relative; background-size: cover; }
+.page-header { 
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{asset('storage/photos/mart.png')}}) no-repeat; 
+    position: relative; 
+    background-size: cover; 
+}
 .page-caption { padding-top: 170px; padding-bottom: 174px; }
 .page-title { font-size: 46px; line-height: 1; color: #fff; font-weight: 600; text-align: center; }
 
