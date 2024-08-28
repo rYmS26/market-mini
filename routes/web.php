@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ProductReportController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\AdminLoginController;
 
 // Route utama mengarah ke halaman home
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -72,3 +73,19 @@ Route::get('/payment-success', [PurchaseController::class, 'paymentSuccess'])->n
 
 // Optional route for payment failure handling
 Route::get('/payment-failed', [PurchaseController::class, 'paymentFailed'])->name('payment.failed');
+
+// Admin login route
+Route::get('admin/login', [AdminLoginController::class, 'login'])->name('admin.adminlogin');
+
+// Admin login action
+Route::post('admin/login', [AdminLoginController::class, 'actionadmin'])->name('admin.actionadmin');
+
+// Admin logout route
+Route::post('admin/logout', [AdminLoginController::class, 'actionlogout'])->name('admin.actionlogout');
+
+// Admin dashboard route
+Route::middleware(['auth:admin'])->group(function () {
+    Route::get('admin/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
+});
