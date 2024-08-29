@@ -12,9 +12,9 @@
                     <div class="page-caption">
                     @if(Auth::check())
                     <h1 class="page-title" style="color: #F7F7F8;">Welcome, {{ Auth::user()->name }}</h1>
-                    <p style="text-align: center; color: #F7F7F8;">Market Mini Indonesia</p>
+                    <p style="text-align: center; color: #F7F7F8;"><a href="{{route('products.index')}}" style=" text-decoration: none; color: white;"><button style="">Buy Now</button></a></p>
                     @else
-                    <p style="text-align: center; color: #F7F7F8;">Market Mini Indonesia</p>
+                    <p style="text-align: center; color: #F7F7F8;"><a href="{{route('products.index')}}">Buy now</a></p>
                     @endif
                     </div>
                 </div>

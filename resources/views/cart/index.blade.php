@@ -42,9 +42,9 @@
                                             </div>
                                             <div class="cart_item_remove cart_info_col">
                                                 <form action="{{ route('cart.remove') }}" method="POST" style="display:inline;">
-                                                @csrf
-                                                <input type="hidden" name="id" value="{{ $id }}">
-                                                <button type="submit" class="button cart_button_remove">Remove</button>
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="{{ $id }}">
+                                                    <button type="submit" class="button cart_button_remove">Remove</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -102,6 +102,7 @@
         </div>
     </div>
 </div>
+
 <style>
     /* Assuming you have a stylesheet or inline <style> block */
     .button.cart_button_remove {
@@ -120,27 +121,26 @@
 </style>
 
 <script>
-document.querySelectorAll('.cart_item_quantity_input').forEach(function(input) {
-    input.addEventListener('change', function() {
-        let id = this.getAttribute('data-id');
-        let quantity = this.value;
+    document.querySelectorAll('.cart_item_quantity_input').forEach(function(input) {
+        input.addEventListener('change', function() {
+            let id = this.getAttribute('data-id');
+            let quantity = this.value;
 
-        fetch("{{ route('cart.update') }}", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            body: JSON.stringify({ id: id, quantity: quantity })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Update total price
-                let priceElement = this.closest('.cart_item_info').querySelector('.cart_item_price .cart_item_text');
-                let price = parseFloat(priceElement.textContent.replace('$', '').replace(',', ''));
-                let totalElement = this.closest('.cart_item_info').querySelector('.cart_item_total .cart_item_text');
-                totalElement.textContent = '$' + (price * quantity).toFixed(2);
+            fetch("{{ route('cart.update') }}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ id: id, quantity: quantity })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    let priceElement = this.closest('.cart_item_info').querySelector('.cart_item_price .cart_item_text');
+                    let price = parseFloat(priceElement.textContent.replace('$', '').replace(',', ''));
+                    let totalElement = this.closest('.cart_item_info').querySelector('.cart_item_total .cart_item_text');
+                    totalElement.textContent = '$' + (price * quantity).toFixed(2);
 
                 // Optionally update the order total here
                 let orderTotal = 0;

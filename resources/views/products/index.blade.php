@@ -73,6 +73,7 @@
     </div>
 </div>
 
+
 <style>
     .card-link {
         text-decoration: none;
@@ -109,11 +110,16 @@
         top: 10px;
         right: 10px;
         z-index: 100;
+        top: 10px;
+        right: 10px;
+        z-index: 100;
     }
 
     .cart-icon-container button {
         background: none;
         border: none;
+        color: #007bff;
+        font-size: 1.5rem;
         color: #007bff;
         font-size: 1.5rem;
     }
