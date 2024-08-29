@@ -4,40 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Midtrans\Midtrans;
-use Midtrans\Snap;
 use Stripe\Charge;
 use Stripe\Stripe;
 
 class PurchaseController extends Controller
 {
+    // Display product details for purchase
     public function buy($id)
     {
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
         return view('transaction', compact('product'));
     }
 
+    // Process payment based on the selected payment method
     public function processPayment(Request $request)
     {
-        $product = Product::find($request->input('product_id'));
+        $product = Product::findOrFail($request->input('product_id'));
         
-        if ($request->input('payment_method') === 'midtrans') {
-            // Midtrans payment handling
-            Midtrans::setApiKey(env('MIDTRANS_SERVER_KEY'));
-            $snapToken = Snap::createTransaction([
-                'transaction_details' => [
-                    'order_id' => uniqid(),
-                    'gross_amount' => $product->price,
-                ],
-                'customer_details' => [
-                    'first_name' => $request->input('name'),
-                    'email' => $request->input('email'),
-                ],
-            ])->token;
-            
-            return redirect()->route('midtrans.checkout', ['snap_token' => $snapToken]);
-
-        } elseif ($request->input('payment_method') === 'stripe') {
+        if ($request->input('payment_method') === 'stripe') {
             // Stripe payment handling
             Stripe::setApiKey(env('STRIPE_SECRET'));
             
@@ -50,10 +34,20 @@ class PurchaseController extends Controller
 
             return redirect()->route('payment.success');
         }
+
+        // Handle other payment methods if needed
+        return redirect()->route('payment.failed')->withErrors('Unsupported payment method.');
     }
 
+    // Show payment success page
     public function paymentSuccess()
     {
         return view('payment_success');
+    }
+
+    // Show payment failure page
+    public function paymentFailed()
+    {
+        return view('payment_failed');
     }
 }

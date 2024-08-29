@@ -23,7 +23,9 @@ class ProductController extends Controller
             $query->where('price', '<=', $request->input('price_max'));
         }
 
-        $products = $query->get();
+        // Use paginate() instead of get()
+        $products = $query->paginate(12); // 12 products per page
+
         return view('products.index', compact('products'));
     }
 
@@ -33,33 +35,32 @@ class ProductController extends Controller
     }
 
     public function store(Request $request)
-{
-    $request->validate([
-        'name' => 'required',
-        'description' => 'required',
-        'price' => 'required|numeric',
-        'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
-    ]);
+    {
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
 
-    // Handle file upload
-    if ($request->hasFile('photo')) {
-        $file = $request->file('photo');
-        $filename = time() . '.' . $file->getClientOriginalExtension();
-        $file->storeAs('public/photos', $filename);
-        $photoUrl = Storage::url('photos/' . $filename);
+        // Handle file upload
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('public/photos', $filename);
+            $photoUrl = Storage::url('photos/' . $filename);
+        }
+
+        // Create product with photo URL
+        Product::create([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'price' => $request->input('price'),
+            'photo_url' => $photoUrl
+        ]);
+
+        return redirect()->route('products.index');
     }
-
-    // Create product with photo URL
-    Product::create([
-        'name' => $request->input('name'),
-        'description' => $request->input('description'),
-        'price' => $request->input('price'),
-        'photo_url' => $photoUrl
-    ]);
-
-    return redirect()->route('products.index');
-}
-
 
     public function show($id)
     {

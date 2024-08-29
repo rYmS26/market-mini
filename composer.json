@@ -10,7 +10,11 @@
         "laravel/framework": "^11.9",
         "laravel/socialite": "^5.15",
         "laravel/tinker": "^2.9",
+<<<<<<< HEAD
         "secondtruth/startmin": "*",
+=======
+        "laravel/ui": "^4.5",
+>>>>>>> 07d769a9cf3a8a5ee45831982dbdd6f095081bc8
         "stripe/stripe-php": "^15.7"
     },
     "require-dev": {
