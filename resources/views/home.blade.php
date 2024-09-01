@@ -12,9 +12,17 @@
                     <div class="page-caption">
                     @if(Auth::check())
                     <h1 class="page-title" style="color: #F7F7F8;">Welcome, {{ Auth::user()->name }}</h1>
-                    <p style="text-align: center; color: #F7F7F8;"><a href="{{route('products.index')}}" style=" text-decoration: none; color: white;"><button style="">Buy Now</button></a></p>
+                    <div style="text-align: center;">
+                    <button class="styled-button">
+                        <a href="{{ route('products.index') }}" class="button-link">Buy Now</a>
+                        </button>
+                    </div>
                     @else
-                    <p style="text-align: center; color: #F7F7F8;"><a href="{{route('products.index')}}">Buy now</a></p>
+                    <div style="text-align: center;">
+                    <button class="styled-button">
+                        <a href="{{ route('products.index') }}" class="button-link">Login</a>
+                        </button>
+                    </div>
                     @endif
                     </div>
                 </div>
@@ -25,19 +33,18 @@
     <!-- news -->
     <div class="card-section">
         <div class="container">
-            <div class="card-block bg-white mb30">
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <!-- section-title -->
-                        <div class="section-title mb-0">
-                            <h2 style="color: #179BAE;">All about Hike. We share our knowledge on blog</h2>
-                            <p>Our approach is very simple: we define your problem and give the best solution. </p>
-                        </div>
-                        <!-- /.section-title -->
-                    </div>
-                </div>
+        <div class="card-block transparent-bg mb30">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <!-- section-title -->
+            <div class="section-title mb-0">
+                <h2>All about Hike. We share our knowledge on blog</h2>
+                <p>Our approach is very simple: we define your problem and give the best solution. </p>
             </div>
-            </div>
+            <!-- /.section-title -->
+        </div>
+    </div>
+</div>
             </div>
             </div>
     <!-- Section for Product, Features, and Pricing -->
@@ -46,9 +53,11 @@
         <div class="row align-items-center">
             <!-- Text Section -->
             <div class="col-lg-6 col-md-12">
-                <img src="{{ asset('storage/photos/ryan-brooklin.png') }}" alt="Our Mission" class="img-fluid rounded no-shadow">
-            </div>
-
+    <div class="image-container">
+        <img src="{{ asset('storage/photos/ryan-brooklin.png') }}" alt="Background Image" class="bg-image img-fluid rounded no-shadow" style="width: 325px;">
+        <img src="{{ asset('storage/photos/ryan-brooklin.png') }}" alt="Main Image" class="main-image img-fluid rounded no-shadow">
+    </div>
+</div>
 
             <!-- Image Section -->
            <div class="col-lg-6 col-md-12 mb-4">
@@ -59,23 +68,37 @@
         </div>
     </div>
 </section>
-    <!-- Section to include the top 3 product cards -->
+    <!-- Section to include the top 6 product cards -->
+    <!-- Section to include the top 6 product cards -->
     <div class="container">
-    <h2 class="text-center mb-4" style="margin-top: 20px; color: #179BAE;" >Top 3 Products</h2>
     <div class="row">
-        @foreach($topProducts as $product)
-        <div class="col-md-3">
-            <div class="card mb-4">
-                <img src="{{ $product->photo_url }}" class="card-img-top product-img" alt="{{ $product->name }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $product->name }}</h5>
-                    <p class="card-text">{{ $product->description }}</p>
-                    <p class="card-text"><strong>${{ $product->price }}</strong></p>
+    <div class="col-md-12">
+            <h2 class="top-seller-title">Top Seller</h2> <!-- Added title here -->
+        </div>
+        <div class="col-md-2">
+            <h2 style="font-size: 36px; font-weight: bold; margin-top: 20px; color: #179BAE;">TOP</h2>
+            <p style="font-size: 24px; font-weight: bold; color: black;">PRODUCT</p>
+        </div>
+        <div class="col-md-10">
+            <div class="scrollable-card-section">
+                <div class="row">
+                    @foreach($topProducts->take(6) as $product)
+                        <div class="col-md-2">
+                            <div class="card mb-2">
+                                <img src="{{ $product->photo_url }}" class="card-img-top product-img" alt="{{ $product->name }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $product->name }}</h5>
+                                    <p class="card-text">{{ $product->description }}</p>
+                                    <p class="card-text"><strong>${{ $product->price }}</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
-        @endforeach
     </div>
+</div>
     
     <!-- Center the "tes" button -->
     <div class="d-flex justify-content-center">
@@ -157,6 +180,28 @@ a:focus, a:hover { text-decoration: none; color: #f85759; }
 .card-block { padding: 80px; }
 .section-title { margin-bottom: 60px; }
 
+.top-seller-title {
+    font-size: 28px; /* Match this with your h2 styling */
+    font-weight: bold;
+    color: #179BAE;
+    margin-bottom: 20px;
+    text-align: center; /* Center the text */
+    width: 100%; /* Ensure it takes full width */
+    margin-top: 20px;
+}
+
+.scrollable-card-section {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 20px 0;
+    scrollbar-width: none;
+}
+
+.scrollable-card-section .card {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px; /* Adjust spacing between cards */
+}
 .home-testimonial {
     padding: 50px 0;
     background-color: #f9f9f9;
@@ -300,6 +345,96 @@ a:focus, a:hover { text-decoration: none; color: #f85759; }
         width: 100%;
         height: auto;
         object-fit: cover;
+    }
+
+    .card-block.transparent-bg {
+    background-color: rgba(255, 255, 255, 0.5%); /* Makes the background transparent */
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+}
+
+.card-block.transparent-bg .section-title h2,
+.card-block.transparent-bg .section-title p {
+    color: black; /* Sets the text color to black */
+}
+
+.styled-button {
+    --c: #179BAE; /* Button color */
+    box-shadow: 0 0 0 .1em inset var(--c);
+    --_g: linear-gradient(var(--c) 0 0) no-repeat;
+    background: 
+        var(--_g) calc(var(--_p,0%) - 100%) 0%,
+        var(--_g) calc(200% - var(--_p,0%)) 0%,
+        var(--_g) calc(var(--_p,0%) - 100%) 100%,
+        var(--_g) calc(200% - var(--_p,0%)) 100%;
+    background-size: 50.5% calc(var(--_p,0%)/2 + .5%);
+    outline-offset: .1em;
+    transition: background-size .4s, background-position 0s .4s;
+    font-family: system-ui, sans-serif;
+    font-size: 1.4rem; /* Smaller font size */
+    cursor: pointer;
+    padding: .3em .8em; /* Further reduced padding */
+    font-weight: bold;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centers text horizontally */
+    text-align: center; /* Centers text horizontally */
+    margin: 0 auto; /* Centers the button within its container */
+    border-radius: 12px; /* Slightly reduced border-radius for a more compact look */
+}
+
+.styled-button:hover {
+    --_p: 100%;
+    transition: background-position .4s, background-size 0s;
+}
+
+.styled-button:active {
+    box-shadow: 0 0 9e9q inset #0009;
+    background-color: var(--c);
+    color: #fff; /* Change text color to white when active */
+}
+
+.button-link {
+    color: black; /* Text color */
+    text-decoration: none; /* Removes underline from the link */
+    display: block;
+    width: 100%; /* Ensures link covers button */
+    height: 100%; /* Ensures link covers button */
+    line-height: 1.2; /* Adjust line-height to vertically center text */
+    font-size: 1rem; /* Adjust font size to fit the button */
+    transition: color 0.3s; /* Smooth transition for text color */
+}
+
+.styled-button:hover .button-link {
+    color: #fff; /* Change text color to white on hover */
+}
+
+.styled-button:active .button-link {
+    color: #fff; /* Ensure text color is white when active */
+}
+
+.btn {
+    border-radius: 10px;
+}
+
+.image-container {
+        position: relative;
+    }
+    .bg-image {
+        position: absolute;
+        top: 30px;
+        left: 176px;
+        z-index: 1;
+        width: 100%;
+        height: auto; /* Atur ini sesuai kebutuhan */
+        filter: grayscale(100%) brightness(0%) contrast(25%);
+    }
+    .main-image {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: auto; /* Atur ini sesuai kebutuhan */
     }
 </style>
 @endsection
