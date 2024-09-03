@@ -38,78 +38,53 @@
                 </div>
             @endif
 
-            <div class="row row-cols-1 row-cols-md-4 g-4">
-                @foreach ($products as $product)
-                <div class="col">
-                    <!-- Wrap the entire card in a link to the product detail page -->
-                    <a href="{{ route('products.show', $product->id) }}" class="card-link">
-                        <div class="card h-100">
-                            <img src="{{ $product->photo_url }}" class="card-img-top product-img" alt="{{ $product->name }}">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $product->name }}</h5>
-                                <p class="card-text">{{ $product->description }}</p>
-                                <p class="card-text"><strong>${{ $product->price }}</strong></p>
-                            </div>
-                            <div class="cart-icon-container">
-                                <form action="{{ route('cart.add') }}" method="POST" style="display: inline;">
-                                    @csrf
-                                    <input type="hidde   n" name="id" value="{{ $product->id }}">
-                                    <button type="submit" class="cart-icon" title="Add to Cart">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </a>
+            <div class="row">
+    @foreach ($products as $product)
+        <div class="col-md-3">
+            <div class="card mb-4 position-relative">
+                <!-- Wrap the card content in an anchor tag -->
+                <a href="{{ route('products.show', $product->id) }}" class="text-decoration-none text-dark">
+                    <img src="{{ $product->photo_url }}" class="card-img-top product-img" alt="{{ $product->name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $product->name }}</h5>
+                        <p class="card-text">{{ $product->description }}</p>
+                        <p class="card-text"><strong>${{ $product->price }}</strong></p>
+                    </div>
+                </a>
+                <div class="cart-icon-container">
+                    <form action="{{ route('cart.add') }}" method="POST" style="display: inline;">
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $product->id }}">
+                        <button type="submit" class="cart-icon" title="Add to Cart">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                    </form>
                 </div>
-                @endforeach
             </div>
+        </div>
+    @endforeach
+</div>
 
-            <!-- Pagination Links -->
-            <div class="d-flex justify-content-center mt-4">
-                {{ $products->links() }}
-            </div>
         </div>
     </div>
 </div>
 
-
 <style>
-    .card-link {
-        text-decoration: none;
-        color: inherit;
-    }
-
-    .card-link:hover {
-        text-decoration: none;
-    }
-
     .card {
         border-radius: 10px;
         overflow: hidden;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         position: relative;
-        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    }
-
-    .card:hover {
-        transform: scale(1.05); /* Scale up slightly on hover */
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
-        color: #179BAE;
-        color: black;
     }
 
     .product-img {
         width: 100%;
-        height: 200px;
-        object-fit: cover; /* Ensure the image covers the card area */
+        height: auto;
+        object-fit: cover;
     }
 
     .cart-icon-container {
         position: absolute;
-        top: 10px;
-        right: 10px;
-        z-index: 100;
         top: 10px;
         right: 10px;
         z-index: 100;
@@ -118,8 +93,6 @@
     .cart-icon-container button {
         background: none;
         border: none;
-        color: #007bff;
-        font-size: 1.5rem;
         color: #007bff;
         font-size: 1.5rem;
     }
@@ -133,8 +106,19 @@
     .cart-icon:hover i {
         color: #179BAE;
     }
-</style>
 
+    .card {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card:hover {
+        transform: scale(0.95);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+</style>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 @endsection

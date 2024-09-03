@@ -59,7 +59,7 @@ class ProductController extends Controller
             'photo_url' => $photoUrl
         ]);
 
-        return redirect()->route('products.index');
+        return redirect()->route('admin.dashboard');
     }
 
     public function show($id)

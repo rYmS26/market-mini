@@ -38,8 +38,7 @@
             text-align: center;
         }
         .navbar {
-            position: relative;
-            background-color: transparent !important; /* Make the navbar background transparent */
+            background-color: white; /* Make the navbar background transparent */
         }
         .navbar-brand {
             position: absolute;
@@ -48,41 +47,39 @@
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="{{ route('home') }}">
-                 <img src="{{ asset('storage/photos/market-mini-logo.png') }}" alt="market-mini-logo" class="img-fluid" style="max-height: 200px;">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="{{route('home')}}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('products.index')}}">Product</a></li>
-                    <li class="nav-item">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="{{ route('home') }}" style="width: 100px;">
+             <img src="{{ asset('storage/photos/market-mini-logo.png') }}" alt="market-mini-logo" class="img-fluid" style="width: 100%;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{{route('home')}}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('products.index')}}">Product</a></li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('cart') }}">Cart</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                @if(Auth::check())
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Welcome, {{ Auth::user()->name }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{{route('profile')}}">Profile</a></li>
+                            <li><a class="dropdown-item" href="{{ route('actionlogout') }}">Logout</a></li>
+                        </ul>
                     </li>
-
-                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                    @if(Auth::check())
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Welcome, {{ Auth::user()->name }}
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{{route('profile')}}">Profile</a></li>
-                                <li><a class="dropdown-item" href="{{ route('actionlogout') }}">Logout</a></li>
-                            </ul>
-                        </li>
-                    @else
-                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-                    @endif
-                </ul>
-            </div>
+                @else
+                    <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
+                @endif
+            </ul>
         </div>
-    </nav>
-
+    </div>
+</nav>
     <div class="container">
         @yield('content')
     </div>

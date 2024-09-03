@@ -1,8 +1,3 @@
-@extends('master')
-
-@section('title', 'Edit Product')
-
-@section('content')
 <div class="container">
     <h1>Edit Product</h1>
     <form method="POST" action="{{ route('products.update', $product->id) }}">
@@ -27,4 +22,4 @@
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
 </div>
-@endsection
+

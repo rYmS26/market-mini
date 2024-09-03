@@ -1,8 +1,14 @@
-@extends('master')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Product</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
 
-@section('title', 'Create Product')
-
-@section('content')
 <div class="container">
     <h1 class="mb-4">Create Product</h1>
     <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
@@ -35,8 +41,13 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Save</button>
+        <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary">Back</a>
     </form>
 </div>
+
+<!-- Bootstrap Bundle with Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybV6Kz5Qv7yD62zW56Ro23H+El/J1rFdKxzcIWfWl5p8g1CiK" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGtml6j5gAu0ivk+YmI5TIiXE4zW3BL6JpGkMcTNjyll7IT+gnW3a3zYDr7" crossorigin="anonymous"></script>
 
 <script>
     function previewImage(event) {
@@ -49,4 +60,6 @@
         reader.readAsDataURL(event.target.files[0]);
     }
 </script>
-@endsection
+
+</body>
+</html>

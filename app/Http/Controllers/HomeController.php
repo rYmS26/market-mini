@@ -10,7 +10,7 @@ class HomeController extends Controller
     public function index()
     {
         // Fetch the top 3 products based on some criteria, e.g., most recent
-        $topProducts = Product::orderBy('created_at', 'desc')->take(3)->get();
+        $topProducts = Product::orderBy('created_at', 'desc')->take(6)->get();
         
         return view('home', compact('topProducts'));
     }
