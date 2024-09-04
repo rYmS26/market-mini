@@ -41,7 +41,7 @@
             background-color: white; /* Make the navbar background transparent */
         }
         .navbar-brand {
-            position: absolute;
+            position: relative;
         }
     </style>
 </head>
