@@ -17,11 +17,6 @@
                         <a href="{{ route('products.index') }}" class="button-link">Buy Now</a>
                         </button>
                     </div>
-                    <div style="text-align: center;">
-                    <button class="styled-button">
-                        <a href="{{ route('products.index') }}" class="button-link">Buy Now</a>
-                        </button>
-                    </div>
                     @else
                     <div style="text-align: center;">
                     <button class="styled-button">
@@ -49,19 +44,7 @@
             <!-- /.section-title -->
         </div>
     </div>
-</div>
-        <div class="card-block transparent-bg mb30">
-    <div class="row">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-            <!-- section-title -->
-            <div class="section-title mb-0">
-                <h2>All about Hike. We share our knowledge on blog</h2>
-                <p>Our approach is very simple: we define your problem and give the best solution. </p>
-            </div>
-            <!-- /.section-title -->
-        </div>
-    </div>
-</div>
+    
             </div>
             </div>
     <!-- Section for Product, Features, and Pricing -->
@@ -87,33 +70,6 @@
     <!-- Section to include the top 6 product cards -->
     <div class="container">
     <div class="row">
-    <div class="col-md-12">
-            <h2 class="top-seller-title">Top Seller</h2> <!-- Added title here -->
-        </div>
-        <div class="col-md-2">
-            <h2 style="font-size: 36px; font-weight: bold; margin-top: 20px; color: #179BAE;">TOP</h2>
-            <p style="font-size: 24px; font-weight: bold; color: black;">PRODUCT</p>
-        </div>
-        <div class="col-md-10">
-            <div class="scrollable-card-section">
-                <div class="row">
-                    @foreach($topProducts->take(6) as $product)
-                        <div class="col-md-2">
-                            <div class="card mb-2">
-                                <img src="{{ $product->photo_url }}" class="card-img-top product-img" alt="{{ $product->name }}">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $product->name }}</h5>
-                                    <p class="card-text">{{ $product->description }}</p>
-                                    <p class="card-text"><strong>${{ $product->price }}</strong></p>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
     <div class="col-md-12">
             <h2 class="top-seller-title">Top Seller</h2> <!-- Added title here -->
         </div>

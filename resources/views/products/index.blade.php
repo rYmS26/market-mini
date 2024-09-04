@@ -31,13 +31,6 @@
         </div>
 
         <div class="col-md-9">
-            @if(Auth::check())
-                <div class="mb-3">
-                    <a href="{{ route('products.create') }}" class="btn btn-success">Add Product</a>
-                    <a href="{{ route('product.report') }}" class="btn btn-danger">Generate Report</a>
-                </div>
-            @endif
-
             <div class="row">
     @foreach ($products as $product)
         <div class="col-md-3">
