@@ -8,10 +8,6 @@
     <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
-    <!-- Custom CSS -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
 
@@ -192,65 +188,6 @@
                 padding-left: calc(var(--nav-width) + 188px);
             }
         }
-        .card-counter {
-            box-shadow: 2px 2px 10px #DADADA;
-            margin: 5px;
-            padding: 20px 10px;
-            background-color: #fff;
-            height: 100px;
-            border-radius: 5px;
-            transition: .3s linear all;
-            position: relative;
-        }
-
-        .card-counter:hover {
-            box-shadow: 4px 4px 20px #DADADA;
-            transition: .3s linear all;
-        }
-
-        .card-counter.primary {
-            background-color: #007bff;
-            color: #FFF;
-        }
-
-        .card-counter.danger {
-            background-color: #ef5350;
-            color: #FFF;
-        }
-
-        .card-counter.success {
-            background-color: #66bb6a;
-            color: #FFF;
-        }
-
-        .card-counter.info {
-            background-color: #26c6da;
-            color: #FFF;
-        }
-
-        .card-counter i {
-            font-size: 5em;
-            opacity: 0.2;
-        }
-
-        .card-counter .count-numbers {
-            position: absolute;
-            right: 35px;
-            top: 20px;
-            font-size: 32px;
-            display: block;
-        }
-
-        .card-counter .count-name {
-            position: absolute;
-            right: 35px;
-            top: 65px;
-            font-style: italic;
-            text-transform: capitalize;
-            opacity: 0.5;
-            display: block;
-            font-size: 18px;
-        }
     </style>
 </head>
 <body id="body-pd">
@@ -261,20 +198,20 @@
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div>
-                <a href="{{route('admin.dashboard')}}" class="nav_logo"> 
+                <a href="{{ route('admin.dashboard') }}" class="nav_logo"> 
                     <i class='bx bx-layer nav_logo-icon'></i> 
                     <span class="nav_logo-name">BBBootstrap</span> 
                 </a>
                 <div class="nav_list"> 
-                    <a href="{{route('admin.dashboard')}}" class="nav_link active"> 
+                    <a href="{{ route('admin.dashboard') }}" class="nav_link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"> 
                         <i class='bx bx-grid-alt nav_icon'></i> 
                         <span class="nav_name">Dashboard</span> 
                     </a> 
-                    <a href="{{ route('admin.userdetail.index') }}" class="nav_link"> 
+                    <a href="{{ route('admin.userdetail.index') }}" class="nav_link {{ request()->routeIs('admin.userdetail.index') ? 'active' : '' }}"> 
                         <i class='bx bx-user nav_icon'></i> 
                         <span class="nav_name">Users</span> 
                     </a> 
-                    <a href="{{ route('admin.products.index') }}" class="nav_link">
+                    <a href="{{ route('admin.products.index') }}" class="nav_link {{ request()->routeIs('admin.products.index') ? 'active' : '' }}">
                         <i class='bx bx-cart nav_icon'></i>
                         <span class="nav_name">Product</span>
                     </a>
@@ -287,45 +224,30 @@
         </nav>
     </div>
     <!--Container Main start-->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="card-counter primary">
-                    <i class="fa fa-code-fork"></i>
-                    <span class="count-numbers">12</span>
-                    <span class="count-name">Flowz</span>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="card-counter danger">
-                    <i class="fa fa-ticket"></i>
-                    <span class="count-numbers">599</span>
-                    <span class="count-name">Instances</span>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="card-counter success">
-                    <i class="fa fa-database"></i>
-                    <span class="count-numbers">6875</span>
-                    <span class="count-name">Data</span>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="card-counter info">
-                    <i class="fa fa-users"></i>
-                    <span class="count-numbers">35</span>
-                    <span class="count-name">Users</span>
-                </div>
-            </div>
-        </div>
-    </div>  
+    <div class="container mt-5">
+        <h1>Guest Users</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th> 
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Registered At</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($guests as $guest)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $guest->name }}</td>
+                        <td>{{ $guest->email }}</td>
+                        <td>{{ $guest->created_at->format('d/m/Y') }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
     <!--Container Main end-->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function(event) {
             const showNavbar = (toggleId, navId, bodyId, headerId) => {
