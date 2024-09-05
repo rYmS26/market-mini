@@ -94,10 +94,10 @@
                 <div class="col-md-4">
                     <h5>Quick Links</h5>
                     <div class="links">
-                        <a href="#" style="color: #179BAE;">Home</a> |
-                        <a href="#" style="color: #179BAE;">About</a> |
-                        <a href="#" style="color: #179BAE;">Services</a> |
-                        <a href="#" style="color: #179BAE;">Contact</a>
+                        <a href="#" style="color: #228be6;">Home</a> |
+                        <a href="#" style="color: #228be6;">About</a> |
+                        <a href="#" style="color: #228be6;">Services</a> |
+                        <a href="#" style="color: #228be6;">Contact</a>
                     </div>
                 </div>
                 <div class="col-md-4">

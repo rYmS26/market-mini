@@ -35,7 +35,6 @@
     @foreach ($products as $product)
         <div class="col-md-3">
             <div class="card mb-4 position-relative">
-                <!-- Wrap the card content in an anchor tag -->
                 <a href="{{ route('products.show', $product->id) }}" class="text-decoration-none text-dark">
                     <img src="{{ $product->photo_url }}" class="card-img-top product-img" alt="{{ $product->name }}">
                     <div class="card-body">
@@ -58,6 +57,10 @@
     @endforeach
 </div>
 
+            <!-- Pagination links -->
+            <div class="d-flex justify-content-center">
+                {{ $products->links('pagination::bootstrap-5') }}
+            </div>
         </div>
     </div>
 </div>
