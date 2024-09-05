@@ -78,17 +78,17 @@
             <p style="font-size: 24px; font-weight: bold; color: black;">PRODUCT</p>
         </div>
         <div class="col-md-10">
-            <div class="scrollable-card-section">
-                <div class="row">
-                    @foreach($topProducts->take(6) as $product)
-                        <div class="col-md-2">
-                            <div class="card mb-2">
-                                <img src="{{ $product->photo_url }}" class="card-img-top product-img" alt="{{ $product->name }}">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $product->name }}</h5>
-                                    <p class="card-text">{{ $product->description }}</p>
-                                    <p class="card-text"><strong>${{ $product->price }}</strong></p>
-                                </div>
+    <div class="scrollable-card-section">
+        <div class="row">
+            @foreach($topProducts->take(6) as $product)
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="{{ $product->photo_url }}" class="card-img-top product-img" alt="{{ $product->name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $product->name }}</h5>
+                            <p class="card-text">{{ $product->description }}</p>
+                            <p class="card-text"><strong>${{ $product->price }}</strong></p>
+                            </div>
                             </div>
                         </div>
                     @endforeach

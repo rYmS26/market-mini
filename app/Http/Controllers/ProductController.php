@@ -42,7 +42,7 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
-
+    
         // Handle file upload
         $photoUrl = null; // Initialize photoUrl
         if ($request->hasFile('photo')) {
@@ -51,7 +51,7 @@ class ProductController extends Controller
             $file->storeAs('public/photos', $filename);
             $photoUrl = Storage::url('photos/' . $filename);
         }
-
+    
         // Create product with photo URL
         Product::create([
             'name' => $request->input('name'),
@@ -59,8 +59,9 @@ class ProductController extends Controller
             'price' => $request->input('price'),
             'photo_url' => $photoUrl
         ]);
-
-        return redirect()->route('products.index');
+    
+        // Redirect to admin.dashboard after successful store
+        return redirect()->route('admin.dashboard')->with('success', 'Product created successfully.');
     }
 
     public function adminShow($id)

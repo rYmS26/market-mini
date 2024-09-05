@@ -3,42 +3,7 @@
 @section('title', 'Profile')
 
 @section('content')
-    <!-- <div class="container">
-        <h2>User Profile</h2>
 
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        <form action="{{ route('profile.update') }}" method="POST">
-            @csrf
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $user->name) }}" required>
-            </div>
-
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" class="form-control" value="{{ old('email', $user->email) }}" required>
-            </div>
-
-            <div class="form-group">
-                <label for="birthdate">Birthdate:</label>
-                <input type="date" id="birthdate" name="birthdate" class="form-control" value="{{ old('birthdate', $user->birthdate) }}" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone Number:</label>
-                <input type="text" id="phone" name="phone" class="form-control" value="{{ old('phone', $user->phone) }}" required>
-            </div>
-            <div class="form-group">
-                <label for="address">Address:</label>
-                <textarea id="address" name="address" class="form-control" required>{{ old('address', $user->address) }}</textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Update Profile</button>
-        </form>
-    </div> -->
     <div class="container rounded bg-white mt-5 mb-5 shadow">
     @if(session('success'))
         <div class="alert alert-success">

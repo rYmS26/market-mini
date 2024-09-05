@@ -32,32 +32,34 @@
 
         <div class="col-md-9">
             <div class="row">
-    @foreach ($products as $product)
-        <div class="col-md-3">
-            <div class="card mb-4 position-relative">
-                <!-- Wrap the card content in an anchor tag -->
-                <a href="{{ route('products.show', $product->id) }}" class="text-decoration-none text-dark">
-                    <img src="{{ $product->photo_url }}" class="card-img-top product-img" alt="{{ $product->name }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $product->name }}</h5>
-                        <p class="card-text">{{ $product->description }}</p>
-                        <p class="card-text"><strong>${{ $product->price }}</strong></p>
+                @foreach ($products as $product)
+                    <div class="col-md-3">
+                        <div class="card mb-4 position-relative">
+                            <!-- Wrap the card content in an anchor tag -->
+                            <a href="{{ route('products.show', $product->id) }}" class="text-decoration-none text-dark">
+                                <img src="{{ $product->photo_url }}" class="card-img-top product-img" alt="{{ $product->name }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $product->name }}</h5>
+                                    <p class="card-text">{{ $product->description }}</p>
+                                    <p class="card-text"><strong>${{ $product->price }}</strong></p>
+                                </div>
+                            </a>
+                            <div class="cart-icon-container">
+                                <form action="{{ route('cart.add') }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $product->id }}">
+                                    <button type="submit" class="cart-icon" title="Add to Cart">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                </a>
-                <div class="cart-icon-container">
-                    <form action="{{ route('cart.add') }}" method="POST" style="display: inline;">
-                        @csrf
-                        <input type="hidden" name="id" value="{{ $product->id }}">
-                        <button type="submit" class="cart-icon" title="Add to Cart">
-                            <i class="fas fa-shopping-cart"></i>
-                        </button>
-                    </form>
-                </div>
+                @endforeach
             </div>
-        </div>
-    @endforeach
-</div>
 
+            <!-- Pagination Links -->
+            {{ $products->links('pagination::bootstrap-5') }}
         </div>
     </div>
 </div>
@@ -113,5 +115,4 @@
     }
 </style>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
 @endsection

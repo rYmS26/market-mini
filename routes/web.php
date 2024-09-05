@@ -10,8 +10,6 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ProductReportController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\AdminLoginController;
-use App\Http\Controllers\DashboardAdminController; // Tambahkan Controller ini
 
 // Route utama mengarah ke halaman home
 Route::get('/', [HomeController::class, 'index'])->name('home');

@@ -9,23 +9,24 @@ use Illuminate\Support\Facades\Storage;
 class ProductUserController extends Controller
 {
     public function index(Request $request)
-    {
-        $query = Product::query();
-
-        // Apply filtering
-        if ($request->has('name')) {
-            $query->where('name', 'like', '%' . $request->input('name') . '%');
-        }
-        if ($request->has('price_min')) {
-            $query->where('price', '>=', $request->input('price_min'));
-        }
-        if ($request->has('price_max')) {
-            $query->where('price', '<=', $request->input('price_max'));
-        }
-
-        $products = $query->get();
-        return view('products.index', compact('products'));
+{
+    $query = Product::query(); // Apply filtering
+    if ($request->has('name')) {
+        $query->where('name', 'like', '%' . $request->input('name') . '%');
     }
+    if ($request->has('price_min')) {
+        $query->where('price', '>=', $request->input('price_min'));
+    }
+    if ($request->has('price_max')) {
+        $query->where('price', '<=', $request->input('price_max'));
+    }
+
+    // Use paginate() to get paginated results
+    $products = $query->paginate(8); // 5 products per page
+
+    return view('products.index', compact('products'));
+}
+
 
     public function create()
     {
@@ -57,7 +58,7 @@ class ProductUserController extends Controller
         'photo_url' => $photoUrl
     ]);
 
-    return redirect()->route('products.index');
+    return redirect()->route('admin.products.index');
 }
 
 

@@ -50,7 +50,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}" style="width: 100px;">
-             <img src="{{ asset('storage/photos/market-mini-logo.png') }}" alt="market-mini-logo" class="img-fluid" style="width: 100%;">
+             <img src="{{ asset('storage/photos/logo-mart.png') }}" alt="market-mini-logo" class="img-fluid" style="width: 100%;">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
