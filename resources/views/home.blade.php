@@ -31,7 +31,7 @@
     </div>
     <!-- /.page-header-->
     <!-- news -->
-    <div class="card-section">
+    {{-- <div class="card-section">
         <div class="container">
         <div class="card-block transparent-bg mb30">
     <div class="row">
@@ -46,7 +46,7 @@
     </div>
     
             </div>
-            </div>
+            </div> --}}
     <!-- Section for Product, Features, and Pricing -->
     <section class="about-section">
     <div class="container">
@@ -60,7 +60,7 @@
 </div>
             <!-- Image Section -->
            <div class="col-lg-6 col-md-12 mb-4">
-                <h2 style="color: #179BAE;">What is Market Mini?</h2>
+                <h2 style="color: #228be6;">What is Market Mini?</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit deleniti, placeat eum nostrum a quibusdam harum quod nesciunt magni explicabo culpa ipsa earum quas quae, reprehenderit, in est repudiandae consequuntur.</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem blanditiis fuga quo ullam sint dolore rem natus animi beatae deserunt. Repudiandae iusto accusamus quo blanditiis magni vitae quae ipsam officia!</p>
             </div>
@@ -74,21 +74,21 @@
             <h2 class="top-seller-title">Top Seller</h2> <!-- Added title here -->
         </div>
         <div class="col-md-2">
-            <h2 style="font-size: 36px; font-weight: bold; margin-top: 20px; color: #179BAE;">TOP</h2>
+            <h2 style="font-size: 36px; font-weight: bold; margin-top: 20px; color: #228be6;">TOP</h2>
             <p style="font-size: 24px; font-weight: bold; color: black;">PRODUCT</p>
         </div>
         <div class="col-md-10">
-    <div class="scrollable-card-section">
-        <div class="row">
-            @foreach($topProducts->take(6) as $product)
-                <div class="col-md-3 mb-4">
-                    <div class="card">
-                        <img src="{{ $product->photo_url }}" class="card-img-top product-img" alt="{{ $product->name }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $product->name }}</h5>
-                            <p class="card-text">{{ $product->description }}</p>
-                            <p class="card-text"><strong>${{ $product->price }}</strong></p>
-                            </div>
+            <div class="scrollable-card-section">
+                <div class="row">
+                    @foreach($topProducts->take(4) as $product)
+                        <div class="col-md-3">
+                            <div class="card mb-2">
+                                <img src="{{ $product->photo_url }}" class="card-img-top product-img" alt="{{ $product->name }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $product->name }}</h5>
+                                    <p class="card-text">{{ $product->description }}</p>
+                                    <p class="card-text"><strong>${{ $product->price }}</strong></p>
+                                </div>
                             </div>
                         </div>
                     @endforeach
@@ -100,7 +100,7 @@
     
     <!-- Center the "tes" button -->
     <div class="d-flex justify-content-center">
-    <button class="btn mb-4" style="background-color: #179BAE;">
+    <button class="btn mb-4" style="background-color: #228be6;">
         <a href="{{ route('products.index') }}" style="color: white; text-decoration: none; margin-bottom: 20px;">View More</a>
     </button>
     </div>
@@ -108,7 +108,7 @@
     <div class="container-fluid">
         <div class="row d-flex justify-content-center testimonial-pos">
             <div class="col-md-12 pt-4 d-flex justify-content-center">
-                <h3 style="color: #179BAE;">Testimonials Customer</h3>
+                <h3 style="color: #228be6;">Testimonials Customer</h3>
             </div>
             <div class="col-md-12 d-flex justify-content-center">
                 <h2>Explore the Customer experience</h2>
@@ -181,7 +181,7 @@ a:focus, a:hover { text-decoration: none; color: #f85759; }
 .top-seller-title {
     font-size: 28px; /* Match this with your h2 styling */
     font-weight: bold;
-    color: #179BAE;
+    color: #228be6;
     margin-bottom: 20px;
     text-align: center; /* Center the text */
     width: 100%; /* Ensure it takes full width */
@@ -203,7 +203,7 @@ a:focus, a:hover { text-decoration: none; color: #f85759; }
 .top-seller-title {
     font-size: 28px; /* Match this with your h2 styling */
     font-weight: bold;
-    color: #179BAE;
+    color: #228be6;
     margin-bottom: 20px;
     text-align: center; /* Center the text */
     width: 100%; /* Ensure it takes full width */
@@ -416,7 +416,7 @@ a:focus, a:hover { text-decoration: none; color: #f85759; }
 }
 
 .button-link {
-    color: black; /* Text color */
+    color: #228be6; /* Text color */
     text-decoration: none; /* Removes underline from the link */
     display: block;
     width: 100%; /* Ensures link covers button */
@@ -424,6 +424,7 @@ a:focus, a:hover { text-decoration: none; color: #f85759; }
     line-height: 1.2; /* Adjust line-height to vertically center text */
     font-size: 1rem; /* Adjust font size to fit the button */
     transition: color 0.3s; /* Smooth transition for text color */
+    color:  white !important;
 }
 
 .styled-button:hover .button-link {

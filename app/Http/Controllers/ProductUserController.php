@@ -21,12 +21,9 @@ class ProductUserController extends Controller
         $query->where('price', '<=', $request->input('price_max'));
     }
 
-    // Use paginate() to get paginated results
-    $products = $query->paginate(8); // 5 products per page
-
-    return view('products.index', compact('products'));
-}
-
+        $products = $query->paginate(8); // 12 products per page
+        return view('products.index', compact('products'));
+    }
 
     public function create()
     {
