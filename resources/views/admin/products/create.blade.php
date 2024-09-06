@@ -6,6 +6,8 @@
     <title>Create Product</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- SweetAlert CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #f8f9fa;
@@ -33,8 +35,8 @@
             border-radius: 6px;
         }
         .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
+            background-color: #228be6;
+            border-color: #228be6;
             border-radius: 6px;
             padding: 10px 20px;
             font-size: 1rem;
@@ -61,7 +63,7 @@
 
 <div class="container">
     <h1>Create Product</h1>
-    <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
+    <form id="createProductForm" method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
@@ -96,6 +98,8 @@
 <!-- Bootstrap Bundle with Popper.js -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+<!-- SweetAlert JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
     function previewImage(event) {
@@ -107,6 +111,25 @@
         }
         reader.readAsDataURL(event.target.files[0]);
     }
+
+    // SweetAlert on form submission
+    document.getElementById('createProductForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting immediately
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You are about to publish the product!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, publish it!",
+            cancelButtonText: "No, cancel!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If the user clicks "Yes", submit the form
+                this.submit();
+            }
+        });
+    });
 </script>
 
 </body>

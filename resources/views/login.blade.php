@@ -119,7 +119,7 @@ body.my-login-page {
 						<div class="card-body">
 						<div class="teks">
     						<h4 class="login-teks">Login</h4>
-    						<h4 class="home-teks"><a href="{{route('home')}}" style="color:  #179BAE;">Home</a></h4>
+    						<h4 class="home-teks"><a href="{{route('home')}}" style="color:  #228be6;">Home</a></h4>
 						</div>
 							<form method="POST" class="my-login-validation" novalidate="">
 								<div class="form-group">
@@ -132,7 +132,7 @@ body.my-login-page {
 
 								<div class="form-group">
 									<label for="password">Password
-										<a href="forgot.html" class="float-right" style="color:  #179BAE;">
+										<a href="forgot.html" class="float-right" style="color:  #228be6;">
 											Forgot Password?
 										</a>
 									</label>
@@ -150,7 +150,7 @@ body.my-login-page {
 								</div>
 
 								<div class="form-group m-0">
-									<button type="submit" class="btn btn-block" style="background-color: #179BAE; color: white;">
+									<button type="submit" class="btn btn-block" style="background-color: #228be6; color: white;">
 										Login
 									</button>
 									<a href="{{ url('auth/google') }}" class="btn btn-danger btn-block">
@@ -158,7 +158,7 @@ body.my-login-page {
                 					</a>
 								</div>
 								<div class="mt-4 text-center">
-									Don't have an account? <a href="{{route('register')}}" style="color:  #179BAE;">Create One</a>
+									Don't have an account? <a href="{{route('register')}}" style="color:  #228be6;">Create One</a>
 								</div>
 							</form>
 						</div>

@@ -93,7 +93,7 @@
                         <div class="cart_buttons">
                             <a href="{{ route('products.index') }}" class="button cart_button_clear">Continue Shopping</a>
                             @if (count($cartItems) > 0)
-                                <button type="submit" class="button cart_button_checkout" style="background-color: #179BAE;">Checkout</button>
+                                <button type="submit" class="button cart_button_checkout" style="background-color: #228be6;">Checkout</button>
                             @endif
                         </div>
                     </form>
@@ -106,7 +106,7 @@
 <style>
     /* Assuming you have a stylesheet or inline <style> block */
     .button.cart_button_remove {
-        background-color: #179BAE;
+        background-color: #228be6;
         color: #ffffff;
         border: 2px solid transparent; /* Initial border color */
         transition: all 0.3s ease; /* Smooth transition */
@@ -114,8 +114,8 @@
 
     .button.cart_button_remove:hover {
         background-color: #ffffff; /* Background color on hover */
-        color: #179BAE; /* Text color on hover */
-        border: 2px solid #179BAE; /* Border color on hover */
+        color: #228be6; /* Text color on hover */
+        border: 2px solid #228be6; /* Border color on hover */
     }
 
 </style>

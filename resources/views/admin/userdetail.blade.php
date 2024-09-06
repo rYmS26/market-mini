@@ -14,7 +14,7 @@
         :root {
             --header-height: 3rem;
             --nav-width: 68px;
-            --first-color: #179BAE;
+            --first-color: #228be6;
             --first-color-light: #AFA5D9;
             --white-color: #F7F6FB;
             --body-font: 'Nunito', sans-serif;
@@ -200,7 +200,7 @@
             <div>
                 <a href="{{ route('admin.dashboard') }}" class="nav_logo"> 
                     <i class='bx bx-layer nav_logo-icon'></i> 
-                    <span class="nav_logo-name">BBBootstrap</span> 
+                    <span class="nav_logo-name">MARKET-MINI</span> 
                 </a>
                 <div class="nav_list"> 
                     <a href="{{ route('admin.dashboard') }}" class="nav_link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"> 
@@ -217,9 +217,13 @@
                     </a>
                 </div>
             </div> 
-            <a href="#" class="nav_link"> 
-                <i class='bx bx-log-out nav_icon'></i> 
-                <span class="nav_name">SignOut</span> 
+            <form action="{{ route('admin.actionlogout') }}" method="POST" id="logout-form" style="display: none;">
+                @csrf
+            </form>
+            
+            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav_link">
+                <i class='bx bx-log-out nav_icon'></i>
+                <span class="nav_name">SignOut</span> <!-- Optional, bisa dihapus jika hanya ingin menampilkan ikon -->
             </a>
         </nav>
     </div>
@@ -229,7 +233,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>#</th> 
+                    <th>ID</th> 
                     <th>Name</th>
                     <th>Email</th>
                     <th>Registered At</th>

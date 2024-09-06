@@ -72,7 +72,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group m-0">
-                                    <button type="submit" class="btn btn-block" style="background-color: #179BAE; color: white;">
+                                    <button type="submit" class="btn btn-block" style="background-color: #228be6; color: white;">
                                         Login
                                     </button>
                                 </div>

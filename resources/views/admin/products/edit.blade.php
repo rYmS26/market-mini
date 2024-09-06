@@ -1,5 +1,3 @@
-<!-- resources/views/products/edit.blade.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,9 +7,11 @@
     <title>Edit Product</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- SweetAlert CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
             background-color: #f8f9fa;
             margin-top: 50px;
         }
@@ -42,8 +42,8 @@
         }
 
         .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
+            background-color: #228be6;
+            border-color: #228be6;
             padding: 10px 20px;
             font-size: 16px;
             border-radius: 4px;
@@ -60,7 +60,7 @@
 <body>
     <div class="container">
         <h1>Edit Product</h1>
-        <form method="POST" action="{{ route('admin.products.update', $product->id) }}">
+        <form id="editProductForm" method="POST" action="{{ route('admin.products.update', $product->id) }}">
             @csrf
             @method('PUT')
             <div class="form-group">
@@ -81,11 +81,35 @@
             </div>
             <div class="d-grid">
                 <button type="submit" class="btn btn-primary">Update</button>
+                <a href="{{ route('admin.products.index') }}" class="btn btn-secondary w-100 mt-3">Back</a>
             </div>
         </form>
     </div>
+
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // SweetAlert on form submission
+        document.getElementById('editProductForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting immediately
+
+            Swal.fire({
+                title: "Good job!",
+                text: "You clicked the button!",
+                icon: "success",
+                showCancelButton: true,  // Optional: adds cancel button
+                confirmButtonText: "Yes, update it!",
+                cancelButtonText: "No, cancel!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If the user clicks "Yes", submit the form
+                    this.submit();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

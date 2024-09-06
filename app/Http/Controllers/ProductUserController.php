@@ -59,11 +59,19 @@ class ProductUserController extends Controller
 }
 
 
-    public function show($id)
-    {
-        $product = Product::findOrFail($id);
-        return view('products.show', compact('product'));
-    }
+public function show($id)
+{
+    $product = Product::find($id);
+
+    // Contoh untuk mendapatkan produk lain (produk yang berbeda dengan yang sedang dilihat)
+    $relatedProducts = Product::where('id', '!=', $product->id)
+                              ->inRandomOrder()  // Untuk produk acak
+                              ->take(12)  // Batasi 4 produk
+                              ->get();
+
+    return view('products.show', compact('product', 'relatedProducts'));
+}
+
 
     public function edit($id)
     {
@@ -123,4 +131,5 @@ class ProductUserController extends Controller
         $product->delete();
         return redirect()->route('products.index');
     }
+
 }

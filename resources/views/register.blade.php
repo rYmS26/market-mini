@@ -152,7 +152,7 @@ body.my-login-page {
 						<div class="card-body">
 						<div class="teks">
     						<h4 class="login-teks">Register</h4>
-    						<h4 class="home-teks"><a href="{{route('home')}}" style="color:  #179BAE;">Home</a></h4>
+    						<h4 class="home-teks"><a href="{{route('home')}}" style="color:  #228be6;">Home</a></h4>
 						</div>	
 							@if(session('message'))
 							<div class="alert alert-success">
@@ -209,7 +209,7 @@ body.my-login-page {
 								</div>
 
 								<div class="form-group m-0">
-									<button type="submit" class="btn btn-primary btn-block" style="color: white; background-color: #179BAE;">
+									<button type="submit" class="btn btn-primary btn-block" style="color: white; background-color: #228be6;">
 										Register
 									</button>
 								</form>
@@ -218,7 +218,7 @@ body.my-login-page {
                 					</a>
 								</div>
 								<div class="mt-4 text-center">
-									Already have an account? <a href="{{route('login')}}" style="color: #179BAE;">Login</a>
+									Already have an account? <a href="{{route('login')}}" style="color: #228be6;">Login</a>
 								</div>
 						</div>
 					</div>

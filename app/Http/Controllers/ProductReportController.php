@@ -10,7 +10,7 @@ class ProductReportController extends Controller
     public function index()
     {
         // Fetch all products from the database
-        $products = Product::all();
+        $products = Product::paginate(8);
         
         return view('report.product_report', compact('products'));
     }

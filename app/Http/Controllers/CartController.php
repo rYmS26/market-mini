@@ -92,4 +92,29 @@ class CartController extends Controller
 
         return view('cart.index', compact('products', 'cartItems', 'totalAmount'));
     }
+
+    public function addToCart(Request $request)
+    {
+        // Ambil ID dan quantity dari request
+        $id = $request->input('id');
+        $quantity = $request->input('quantity', 1); // Default quantity = 1 jika tidak ada
+
+        // Ambil cart dari session, atau buat array kosong jika belum ada
+        $cart = session()->get('cart', []);
+
+        // Cek apakah produk sudah ada di cart
+        if (isset($cart[$id])) {
+            // Jika ada, tambahkan kuantitas yang baru ke kuantitas yang sudah ada
+            $cart[$id] += $quantity;
+        } else {
+            // Jika belum ada, tambahkan produk dengan kuantitas yang baru
+            $cart[$id] = $quantity;
+        }
+
+        // Simpan kembali cart ke session
+        session()->put('cart', $cart);
+
+        return redirect()->route('cart')->with('success', 'Product added to cart');
+    }
+
 }

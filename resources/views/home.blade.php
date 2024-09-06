@@ -5,25 +5,27 @@
 @section('content')
 
 <header>
-<div class="page-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="page-caption">
-                    @if(Auth::check())
-                    <h1 class="page-title" style="color: #F7F7F8;">Welcome, {{ Auth::user()->name }}</h1>
-                    <div style="text-align: center;">
-                    <button class="styled-button">
-                        <a href="{{ route('products.index') }}" class="button-link">Buy Now</a>
-                        </button>
-                    </div>
-                    @else
-                    <div style="text-align: center;">
-                    <button class="styled-button">
-                        <a href="{{ route('login') }}" class="button-link">Login</a>
-                        </button>
-                    </div>
-                    @endif
+    <div data-aos="fade-up-right">
+        <div class="page-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="page-caption">
+                            @if(Auth::check())
+                                <h1 class="page-title" style="color: #F7F7F8;">Welcome, {{ Auth::user()->name }}</h1>
+                                <div style="text-align: center;">
+                                    <button class="styled-button">
+                                        <a href="{{ route('products.index') }}" class="button-link">Buy Now</a>
+                                    </button>
+                                </div>
+                            @else
+                                <div style="text-align: center;">
+                                    <button class="styled-button">
+                                        <a href="{{ route('login') }}" class="button-link">Login</a>
+                                    </button>
+                                </div>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
@@ -83,12 +85,14 @@
                     @foreach($topProducts->take(4) as $product)
                         <div class="col-md-3">
                             <div class="card mb-2">
+                                <a href="{{ route('products.show', $product->id) }}" class="text-decoration-none text-dark">
                                 <img src="{{ $product->photo_url }}" class="card-img-top product-img" alt="{{ $product->name }}">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $product->name }}</h5>
                                     <p class="card-text">{{ $product->description }}</p>
                                     <p class="card-text"><strong>${{ $product->price }}</strong></p>
                                 </div>
+                                </a>
                             </div>
                         </div>
                     @endforeach
@@ -150,7 +154,6 @@
                 </div>
         </section>
 </section>
-   
 </div>
 <style>
     body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-family: 'Overpass', sans-serif; letter-spacing: 0px; font-size: 17px; color: #8d8f90; font-weight: 400; line-height: 32px; background-color: #edefef; }
@@ -220,7 +223,7 @@ a:focus, a:hover { text-decoration: none; color: #f85759; }
 .scrollable-card-section .card {
     display: inline-block;
     vertical-align: top;
-    margin-right: 20px; /* Adjust spacing between cards */
+    margin-right: 0px; /* Adjust spacing between cards */
 }
 .home-testimonial {
     padding: 50px 0;
@@ -379,7 +382,7 @@ a:focus, a:hover { text-decoration: none; color: #f85759; }
 }
 
 .styled-button {
-    --c: #179BAE; /* Button color */
+    --c: #228be6; /* Button color */
     box-shadow: 0 0 0 .1em inset var(--c);
     --_g: linear-gradient(var(--c) 0 0) no-repeat;
     background: 
@@ -470,7 +473,7 @@ a:focus, a:hover { text-decoration: none; color: #f85759; }
 }
 
 .styled-button {
-    --c: #179BAE; /* Button color */
+    --c: #228be6; /* Button color */
     box-shadow: 0 0 0 .1em inset var(--c);
     --_g: linear-gradient(var(--c) 0 0) no-repeat;
     background: 
