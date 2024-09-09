@@ -23,12 +23,11 @@
                 <form action="{{ route('cart.add') }}" method="POST" class="d-flex align-items-center">
                     @csrf
                     <input type="hidden" name="id" value="{{ $product->id }}">
-                    
                     <div class="input-group me-3" style="max-width: 150px;">
-                        <span class="input-group-text">Qty</span>
-                        <input type="number" class="form-control" name="quantity" min="1" value="1">
+                        <button class="btn btn-outline-secondary" type="button" id="decrementBtn">-</button>
+                        <input type="number" class="form-control" name="quantity" min="1" value="1" id="quantityInput">
+                        <button class="btn btn-outline-secondary" type="button" id="incrementBtn">+</button>
                     </div>
-                    
                     <button type="submit" class="btn btn-primary d-flex align-items-center" title="Add to Cart">
                         <i class="fas fa-shopping-cart me-2"></i> Add to Cart
                     </button>
@@ -110,4 +109,24 @@
         border-color: #117a8b;
     }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const quantityInput = document.getElementById('quantityInput');
+        const decrementBtn = document.getElementById('decrementBtn');
+        const incrementBtn = document.getElementById('incrementBtn');
+
+        decrementBtn.addEventListener('click', function() {
+            let currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        });
+
+        incrementBtn.addEventListener('click', function() {
+            let currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue + 1;
+        });
+    });
+</script>
 @endsection

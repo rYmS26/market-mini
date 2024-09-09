@@ -91,24 +91,24 @@
     <!-- SweetAlert JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        // SweetAlert on form submission
-        document.getElementById('editProductForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the form from submitting immediately
+       // SweetAlert on form submission
+       document.getElementById('editProductForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting immediately
 
-            Swal.fire({
-                title: "Good job!",
-                text: "You clicked the button!",
-                icon: "success",
-                showCancelButton: true,  // Optional: adds cancel button
-                confirmButtonText: "Yes, update it!",
-                cancelButtonText: "No, cancel!"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // If the user clicks "Yes", submit the form
-                    this.submit();
-                }
-            });
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You are about to update the product!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, update it!",
+            cancelButtonText: "No, cancel!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If the user clicks "Yes", submit the form
+                this.submit();
+            }
         });
+    });
     </script>
 </body>
 

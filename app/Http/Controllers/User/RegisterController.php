@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Routing\Controller as BaseController;
 use Session;
 
-class RegisterController extends Controller
+class RegisterController extends BaseController
 {
     public function register()
     {

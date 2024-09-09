@@ -1,16 +1,23 @@
-@extends('master')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
 
-@section('title', 'Transaction')
-
-@section('content')
 <div class="container">
-    <h1>Purchase Product</h1>
+    <h1 class="mt-5">Purchase Product</h1>
     <h2>{{ $product->name }}</h2>
     <p>Price: ${{ $product->price }}</p>
 
-    <form action="{{ route('process.payment') }}" method="POST">
+    <form id="payment-form" action="{{ route('process.payment') }}" method="POST">
         @csrf
         <input type="hidden" name="product_id" value="{{ $product->id }}">
+        <input type="hidden" id="stripePaymentMethodId" name="stripePaymentMethodId">
+
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" class="form-control" id="name" name="name" required>
@@ -19,34 +26,47 @@
             <label for="email">Email</label>
             <input type="email" class="form-control" id="email" name="email" required>
         </div>
-        <div class="form-group">
-            <label for="payment_method">Payment Method</label>
-            <select class="form-control" id="payment_method" name="payment_method">
-                <option value="stripe">Stripe</option>
-            </select>
+
+        <div id="card-element">
+            <!-- A Stripe Element will be inserted here. -->
         </div>
-        <div id="stripe-form" style="display:none;">
-            <!-- Stripe Payment Form -->
-            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="{{ config('services.stripe.key') }}"
-                    data-description="Purchase Product"
-                    data-amount="{{ $product->price * 100 }}"
-                    data-locale="auto"></script>
-        </div>
-        <button type="submit" class="btn btn-primary">Pay Now</button>
+        <div id="card-errors" role="alert"></div>
+
+        <button type="submit" class="btn btn-primary btn-block mt-3">Pay Now</button>
     </form>
 </div>
 
-@section('scripts')
+<script src="https://js.stripe.com/v3/"></script>
 <script>
-    document.getElementById('payment_method').addEventListener('change', function () {
-        var value = this.value;
-        if (value === 'stripe') {
-            document.getElementById('stripe-form').style.display = 'block';
-        } else {
-            document.getElementById('stripe-form').style.display = 'none';
-        }
+    var stripe = Stripe('{{ config('services.stripe.key') }}');
+    var elements = stripe.elements();
+    var cardElement = elements.create('card');
+    cardElement.mount('#card-element');
+
+    var form = document.getElementById('payment-form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        stripe.createPaymentMethod({
+            type: 'card',
+            card: cardElement,
+            billing_details: {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+            },
+        }).then(function(result) {
+            if (result.error) {
+                // Display error in payment form
+                var errorElement = document.getElementById('card-errors');
+                errorElement.textContent = result.error.message;
+            } else {
+                // Send the PaymentMethod ID to your server
+                document.getElementById('stripePaymentMethodId').value = result.paymentMethod.id;
+                form.submit();
+            }
+        });
     });
 </script>
-@endsection
 
+</body>
+</html>

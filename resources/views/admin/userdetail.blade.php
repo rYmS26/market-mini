@@ -11,245 +11,288 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
 
-        :root {
-            --header-height: 3rem;
-            --nav-width: 68px;
-            --first-color: #228be6;
-            --first-color-light: #AFA5D9;
-            --white-color: #F7F6FB;
-            --body-font: 'Nunito', sans-serif;
-            --normal-font-size: 1rem;
-            --z-fixed: 100;
-        }
+:root {
+    --header-height: 3rem;
+    --nav-width: 68px;
+    --first-color: #228be6;
+    --first-color-light: #AFA5D9;
+    --white-color: #F7F6FB;
+    --body-font: 'Nunito', sans-serif;
+    --normal-font-size: 1rem;
+    --z-fixed: 100;
+}
 
-        *, ::before, ::after {
-            box-sizing: border-box;
-        }
+*, ::before, ::after {
+    box-sizing: border-box;
+}
 
-        body {
-            position: relative;
-            margin: var(--header-height) 0 0 0;
-            padding: 0 1rem;
-            font-family: var(--body-font);
-            font-size: var(--normal-font-size);
-            transition: .5s;
-        }
+body {
+    position: relative;
+    margin: var(--header-height) 0 0 0;
+    padding: 0 1rem;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    transition: .5s;
+}
 
-        a {
-            text-decoration: none;
-        }
+a {
+    text-decoration: none;
+}
 
-        .header {
-            width: 100%;
-            height: var(--header-height);
-            position: fixed;
-            top: 0;
-            left: 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 1rem;
-            background-color: var(--white-color);
-            z-index: var(--z-fixed);
-            transition: .5s;
-        }
+.header {
+    width: 100%;
+    height: var(--header-height);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    background-color: var(--white-color);
+    z-index: var(--z-fixed);
+    transition: .5s;
+}
 
-        .header_toggle {
-            color: var(--first-color);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
+.header_toggle {
+    color: var(--first-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
 
-        .header_img {
-            width: 35px;
-            height: 35px;
-            display: flex;
-            justify-content: center;
-            border-radius: 50%;
-            overflow: hidden;
-        }
+.header_img {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
 
-        .header_img img {
-            width: 40px;
-        }
+.header_img img {
+    width: 40px;
+}
 
-        .l-navbar {
-            position: fixed;
-            top: 0;
-            left: -30%;
-            width: var(--nav-width);
-            height: 100vh;
-            background-color: var(--first-color);
-            padding: .5rem 1rem 0 0;
-            transition: .5s;
-            z-index: var(--z-fixed);
-        }
+.l-navbar {
+    position: fixed;
+    top: 0;
+    left: 0; /* Ensure sidebar is visible */
+    width: var(--nav-width);
+    height: 100vh;
+    background-color: var(--first-color);
+    padding: .5rem 1rem 0 0;
+    transition: .5s;
+    z-index: var(--z-fixed);
+}
 
-        .nav {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow: hidden;
-        }
+.nav {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
 
-        .nav_logo, .nav_link {
-            display: grid;
-            grid-template-columns: max-content max-content;
-            align-items: center;
-            column-gap: 1rem;
-            padding: .5rem 0 .5rem 1.5rem;
-        }
+.nav_logo, .nav_link {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    align-items: center;
+    column-gap: 1rem;
+    padding: .5rem 0 .5rem 1.5rem;
+}
 
-        .nav_logo {
-            margin-bottom: 2rem;
-        }
+.nav_logo {
+    margin-bottom: 2rem;
+}
 
-        .nav_logo-icon {
-            font-size: 1.25rem;
-            color: var(--white-color);
-        }
+.nav_logo-icon {
+    font-size: 1.25rem;
+    color: var(--white-color);
+}
 
-        .nav_logo-name {
-            color: var(--white-color);
-            font-weight: 700;
-        }
+.nav_logo-name {
+    color: var(--white-color);
+    font-weight: 700;
+}
 
-        .nav_link {
-            position: relative;
-            color: var(--first-color-light);
-            margin-bottom: 1.5rem;
-            transition: .3s;
-        }
+.nav_link {
+    position: relative;
+    color: var(--first-color-light);
+    margin-bottom: 1.5rem;
+    transition: .3s;
+}
 
-        .nav_link:hover {
-            color: var(--white-color);
-        }
+.nav_link:hover {
+    color: var(--white-color);
+}
 
-        .nav_icon {
-            font-size: 1.25rem;
-        }
+.nav_icon {
+    font-size: 1.25rem;
+}
 
-        .show {
-            left: 0;
-        }
+.nav_link.active .nav_icon {
+    color: var(--white-color);
+}
 
-        .body-pd {
-            padding-left: calc(var(--nav-width) + 1rem);
-        }
+.show {
+    left: 0;
+}
 
-        .active {
-            color: var(--white-color);
-        }
+.body-pd {
+    padding-left: calc(var(--nav-width) + 1rem);
+}
 
-        .active::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            width: 2px;
-            height: 32px;
-            background-color: var(--white-color);
-        }
+.active {
+    color: var(--white-color);
+}
 
-        .height-100 {
-            height: 100vh;
-        }
+.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 2px;
+    height: 32px;
+    background-color: var(--white-color);
+}
 
-        @media screen and (min-width: 768px) {
-            body {
-                margin: calc(var(--header-height) + 1rem) 0 0 0;
-                padding-left: calc(var(--nav-width) + 2rem);
-            }
+.height-100 {
+    height: 100vh;
+}
 
-            .header {
-                height: calc(var(--header-height) + 1rem);
-                padding: 0 2rem 0 calc(var(--nav-width) + 2rem);
-            }
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: #fff;
+}
 
-            .header_img {
-                width: 40px;
-                height: 40px;
-            }
+.table-bordered {
+    border: 1px solid #dee2e6;
+}
 
-            .header_img img {
-                width: 45px;
-            }
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
 
-            .l-navbar {
-                left: 0;
-                padding: 1rem 1rem 0 0;
-            }
+.table th, .table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
 
-            .show {
-                width: calc(var(--nav-width) + 156px);
-            }
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
 
-            .body-pd {
-                padding-left: calc(var(--nav-width) + 188px);
-            }
-        }
-    </style>
+.table tbody + tbody {
+    border-top: 2px solid #dee2e6;
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        margin: calc(var(--header-height) + 1rem) 0 0 0;
+        padding-left: calc(var(--nav-width) + 2rem);
+    }
+
+    .header {
+        height: calc(var(--header-height) + 1rem);
+        padding: 0 2rem 0 calc(var(--nav-width) + 2rem);
+    }
+
+    .header_img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .header_img img {
+        width: 45px;
+    }
+
+    .l-navbar {
+        left: 0;
+        padding: 1rem 1rem 0 0;
+    }
+
+    .show {
+        width: calc(var(--nav-width) + 156px);
+    }
+
+    .body-pd {
+        padding-left: calc(var(--nav-width) + 188px);
+    }
+}
+</style>
 </head>
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
+        <div class="header_img"> <img src="{{asset('storage/photos/mart-japan.png')}}" alt=""> </div>
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div>
-                <a href="{{ route('admin.dashboard') }}" class="nav_logo"> 
-                    <i class='bx bx-layer nav_logo-icon'></i> 
-                    <span class="nav_logo-name">MARKET-MINI</span> 
+                <a href="{{ route('admin.dashboard') }}" class="nav_logo">
+                    <i class='bx bx-layer nav_logo-icon'></i>
+                    <span class="nav_logo-name">MARKET-MINI</span>
                 </a>
-                <div class="nav_list"> 
-                    <a href="{{ route('admin.dashboard') }}" class="nav_link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"> 
-                        <i class='bx bx-grid-alt nav_icon'></i> 
-                        <span class="nav_name">Dashboard</span> 
-                    </a> 
-                    <a href="{{ route('admin.userdetail.index') }}" class="nav_link {{ request()->routeIs('admin.userdetail.index') ? 'active' : '' }}"> 
-                        <i class='bx bx-user nav_icon'></i> 
-                        <span class="nav_name">Users</span> 
-                    </a> 
+                <div class="nav_list">
+                    <a href="{{ route('admin.dashboard') }}" class="nav_link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                        <i class='bx bx-grid-alt nav_icon'></i>
+                        <span class="nav_name">Dashboard</span>
+                    </a>
+                    <a href="{{ route('admin.userdetail.index') }}" class="nav_link {{ request()->routeIs('admin.userdetail.index') ? 'active' : '' }}">
+                        <i class='bx bx-user nav_icon'></i>
+                        <span class="nav_name">Users</span>
+                    </a>
                     <a href="{{ route('admin.products.index') }}" class="nav_link {{ request()->routeIs('admin.products.index') ? 'active' : '' }}">
                         <i class='bx bx-cart nav_icon'></i>
                         <span class="nav_name">Product</span>
                     </a>
+                    <a href="{{ route('admin.infotransaction') }}" class="nav_link {{ request()->routeIs('admin.infotransaction') ? 'active' : '' }}">
+                        <i class='bx bx-money nav_icon'></i>
+                        <span class="nav_name">Transactions</span> <!-- Corrected link name -->
+                    </a>
                 </div>
-            </div> 
+            </div>
             <form action="{{ route('admin.actionlogout') }}" method="POST" id="logout-form" style="display: none;">
                 @csrf
             </form>
-            
+
             <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav_link">
                 <i class='bx bx-log-out nav_icon'></i>
-                <span class="nav_name">SignOut</span> <!-- Optional, bisa dihapus jika hanya ingin menampilkan ikon -->
+                <span class="nav_name">SignOut</span>
             </a>
         </nav>
     </div>
     <!--Container Main start-->
-    <div class="container mt-5">
+    <div class="container mt-5 pt-5">
         <h1>Guest Users</h1>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th> 
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Registered At</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($guests as $guest)
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead>
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $guest->name }}</td>
-                        <td>{{ $guest->email }}</td>
-                        <td>{{ $guest->created_at->format('d/m/Y') }}</td>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Number</th>
+                        <th>Registered At</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach($guests as $guest)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $guest->name }}</td>
+                            <td>{{ $guest->email }}</td>
+                            <td>{{ $guest->address}}</td>
+                            <td>{{ $guest->phone}}</td>
+                            <td>{{ $guest->created_at->format('d/m/Y') }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
     <!--Container Main end-->
     <script>

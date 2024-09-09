@@ -91,7 +91,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary w-100">Save</button>
-        <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary w-100 mt-3">Back</a>
+        <a href="{{ route('admin.products.index') }}" class="btn btn-secondary w-100 mt-3">Back</a>
     </form>
 </div>
 

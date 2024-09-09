@@ -9,7 +9,7 @@
             <div class="col-lg-10 offset-lg-1">
                 <div class="cart_container">
                     <div class="cart_title">
-                        Shopping Cart <small> ({{ count($cartItems) }} items in your cart) </small>
+                        Shopping Cart <small> ({{ count($cartItems) > 0 ? count($cartItems) : '0' }} items in your cart) </small>
                     </div>
                     <div class="cart_items">
                         <ul class="cart_list">
@@ -50,7 +50,7 @@
                                         </div>
                                     </li>
                                 @endif
-                            @empty
+                                @empty
                                 <li class="cart_item clearfix">
                                     <div class="cart_item_info">Your cart is empty.</div>
                                 </li>
@@ -59,7 +59,7 @@
                     </div>
                     @if (count($cartItems) > 0)
                         @php
-                            // Convert cartItems array to a Collection for reduction
+                            // Convert $cartItems = sessionarray to a Collection for reduction
                             $cartItemsCollection = collect($cartItems);
 
                             // Calculate total amount for all items in the cart

@@ -150,7 +150,7 @@ body.my-login-page {
 								</div>
 
 								<div class="form-group m-0">
-									<button type="submit" class="btn btn-block" style="background-color: #228be6; color: white;">
+									<button type="submit" class="btn btn-block" style="background-color: #228be6; color: white; font-weight: 500;">
 										Login
 									</button>
 									<a href="{{ url('auth/google') }}" class="btn btn-danger btn-block">

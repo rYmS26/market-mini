@@ -209,7 +209,7 @@ body.my-login-page {
 								</div>
 
 								<div class="form-group m-0">
-									<button type="submit" class="btn btn-primary btn-block" style="color: white; background-color: #228be6;">
+									<button type="submit" class="btn btn-primary btn-block" style="color: white; background-color: #228be6; font-weight: 500;">
 										Register
 									</button>
 								</form>

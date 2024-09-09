@@ -39,11 +39,9 @@
     <div class="d-flex justify-content-center mb-3">
     <div class="text-center">
         <a href="{{ route('product.report.pdf') }}" class="btn btn-danger me-2">Download PDF</a>
-        <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary">Back</a>
+        <a href="{{ route('admin.products.index') }}" class="btn btn-secondary">Back</a>
     </div>
 </div>
-
-
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>

@@ -128,6 +128,11 @@
 
         .nav_icon {
             font-size: 1.25rem;
+            color: var(--first-color-light); /* Default icon color */
+        }
+
+        .nav_link.active .nav_icon {
+            color: var(--white-color); /* Icon color when active */
         }
 
         .show {
@@ -155,6 +160,10 @@
             height: 100vh;
         }
 
+        .alert {
+        transition: opacity 0.6s ease-out;
+        }
+        
         @media screen and (min-width: 768px) {
             body {
                 margin: calc(var(--header-height) + 1rem) 0 0 0;
@@ -193,7 +202,7 @@
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
+        <div class="header_img"> <img src="{{asset('storage/photos/mart-japan.png')}}" alt=""> </div>
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
@@ -203,18 +212,22 @@
                     <span class="nav_logo-name">MARKET-MINI</span>
                 </a>
                 <div class="nav_list">
-                    <a href="{{ route('admin.dashboard') }}" class="nav_link">
+                    <a href="{{ route('admin.dashboard') }}" class="nav_link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                         <i class='bx bx-grid-alt nav_icon'></i>
                         <span class="nav_name">Dashboard</span>
                     </a>
-                    <a href="{{ route('admin.userdetail.index') }}" class="nav_link">
+                    <a href="{{ route('admin.userdetail.index') }}" class="nav_link {{ request()->routeIs('admin.userdetail.index') ? 'active' : '' }}">
                         <i class='bx bx-user nav_icon'></i>
                         <span class="nav_name">Users</span>
                     </a>
-                    <a href="{{ route('admin.products.index') }}" class="nav_link active">
+                    <a href="{{ route('admin.products.index') }}" class="nav_link {{ request()->routeIs('admin.products.index') ? 'active' : '' }}">
                         <i class='bx bx-cart nav_icon'></i>
                         <span class="nav_name">Product</span>
                     </a>
+                    <a href="{{ route('admin.infotransaction') }}" class="nav_link {{ request()->routeIs('admin.transactions.index') ? 'active' : '' }}">
+                        <i class='bx bx-money nav_icon'></i>
+                        <span class="nav_name">Transactions</span>
+                    </a>                    
                 </div>
             </div>
             <form action="{{ route('admin.actionlogout') }}" method="POST" id="logout-form" style="display: none;">
@@ -229,13 +242,17 @@
     <!--Container Main start-->
     <div class="height-100 p-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
+            @if(session('success'))
+            <div class="alert alert-success" id="success-alert">
+                {{ session('success') }}
+            </div>
+        @endif
             <h4>Product List</h4>
             <div>
                 <a href="{{ route('admin.products.create') }}" class="btn btn-success">Add Product</a>
                 <a href="{{ route('product.report') }}" class="btn btn-danger">Generate Report</a>
             </div>
         </div>
-
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -284,15 +301,17 @@
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'Cancel'
             }).then((result) => {
                 if (result.isConfirmed) {
                     Swal.fire(
                         'Deleted!',
                         'Your product has been deleted.',
                         'success'
-                    );
-                    form.submit(); // Submit the form
+                    ).then(() => {
+                        form.submit(); // Submit the form
+                    });
                 }
             });
         }
@@ -324,5 +343,20 @@
             showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
         });
     </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var alert = document.getElementById('success-alert');
+        if (alert) {
+            setTimeout(function() {
+                alert.style.opacity = '0';
+                setTimeout(function() {
+                    alert.style.display = 'none';
+                }, 600); // Menunggu 0.6 detik agar transisi opacity selesai
+            }, 3000); // Menunggu 3 detik sebelum memulai penghapusan
+        }
+    });
+</script>
+
 </body>
 </html>

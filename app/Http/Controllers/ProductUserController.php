@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Controller; // Ensure this is imported
 
 class ProductUserController extends Controller
 {
@@ -55,7 +56,7 @@ class ProductUserController extends Controller
         'photo_url' => $photoUrl
     ]);
 
-    return redirect()->route('admin.products.index');
+    return redirect()->route('admin.products.index')->with('success', 'Product has been added successfully.');
 }
 
 

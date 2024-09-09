@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Routing\Controller as BaseController; // Import the base controller class
 use Session;
 
-class AdminLoginController extends Controller
+class AdminLoginController extends BaseController
 {
     public function login()
     {
