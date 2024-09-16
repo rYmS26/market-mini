@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-
-class CartController extends Controller
+use Illuminate\Routing\Controller as BaseController;
+class CartController extends BaseController
 {
     // Method to add items to the cart
     public function add(Request $request)

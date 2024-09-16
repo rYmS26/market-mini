@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\User\CartController;
 
 // Cart routes
 Route::get('/cart', [CartController::class, 'index'])->name('cart');

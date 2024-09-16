@@ -30,7 +30,7 @@ return [
             'model' => App\Models\User::class,  // Model Admin
         ],
     ],
-
+    
     'passwords' => [
         'users' => [
             'provider' => 'users',

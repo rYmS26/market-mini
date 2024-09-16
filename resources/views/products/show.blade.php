@@ -3,7 +3,7 @@
 @section('title', 'Product Details')
 
 @section('content')
-<div class="container mt-5">
+<div class="container mt-3">
     <div class="row">
         <!-- Left Column: Product Image -->
         <div class="col-md-6">
@@ -23,10 +23,11 @@
                 <form action="{{ route('cart.add') }}" method="POST" class="d-flex align-items-center">
                     @csrf
                     <input type="hidden" name="id" value="{{ $product->id }}">
-                    <div class="input-group me-3" style="max-width: 150px;">
-                        <button class="btn btn-outline-secondary" type="button" id="decrementBtn">-</button>
-                        <input type="number" class="form-control" name="quantity" min="1" value="1" id="quantityInput">
-                        <button class="btn btn-outline-secondary" type="button" id="incrementBtn">+</button>
+                    <input type="hidden" name="quantity" id="quantityInput" value="1"> <!-- Hidden input field for quantity -->
+                    <div class="wrapper">
+                        <span class="minus">-</span>
+                        <span class="num">1</span>
+                        <span class="plus">+</span>
                     </div>
                     <button type="submit" class="btn btn-primary d-flex align-items-center" title="Add to Cart">
                         <i class="fas fa-shopping-cart me-2"></i> Add to Cart
@@ -64,6 +65,39 @@
     </div>
 </div>
 <style>
+    /* Google fonts import link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+}
+.wrapper{
+  height: 40px;
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFF;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  margin-right: 10px;
+} 
+.wrapper span{
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+}
+.wrapper span.num{
+  font-size: 20px;
+  border-right: 2px solid rgba(0,0,0,0.2);
+  border-left: 2px solid rgba(0,0,0,0.2);
+  pointer-events: none;
+}
     .product-image img {
         transition: transform 0.3s ease-in-out;
     }
@@ -112,20 +146,25 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        const plus = document.querySelector(".plus");
+        const minus = document.querySelector(".minus");
+        const num = document.querySelector(".num");
         const quantityInput = document.getElementById('quantityInput');
-        const decrementBtn = document.getElementById('decrementBtn');
-        const incrementBtn = document.getElementById('incrementBtn');
 
-        decrementBtn.addEventListener('click', function() {
-            let currentValue = parseInt(quantityInput.value);
-            if (currentValue > 1) {
-                quantityInput.value = currentValue - 1;
-            }
+        let quantity = parseInt(num.innerText);
+
+        plus.addEventListener("click", () => {
+            quantity++;
+            num.innerText = quantity;
+            quantityInput.value = quantity; // Update hidden input field
         });
 
-        incrementBtn.addEventListener('click', function() {
-            let currentValue = parseInt(quantityInput.value);
-            quantityInput.value = currentValue + 1;
+        minus.addEventListener("click", () => {
+            if (quantity > 1) {
+                quantity--;
+                num.innerText = quantity;
+                quantityInput.value = quantity; // Update hidden input field
+            }
         });
     });
 </script>

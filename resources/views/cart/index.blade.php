@@ -14,7 +14,7 @@
                     <div class="cart_items">
                         <ul class="cart_list">
                             @forelse ($cartItems as $id => $quantity)
-                                @php
+                                @php    
                                     $product = $products->get($id);
                                     $totalPrice = $product ? $product->price * $quantity : 0;
                                 @endphp

@@ -83,7 +83,7 @@
         <div class="mb-3">
             <label for="photo" class="form-label">Photo</label>
             <input type="file" class="form-control" id="photo" name="photo" accept="image/*" required onchange="previewImage(event)">
-            <small class="form-text">Recommended size: 800x600px</small>
+            <small class="form-text">Recommended size: 736x736px</small>
         </div>
 
         <div class="mb-3">

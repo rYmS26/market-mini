@@ -31,6 +31,8 @@
             </div>
         </div>
     </div>
+</header>
+     
     <!-- /.page-header-->
     <!-- news -->
     {{-- <div class="card-section">
@@ -71,36 +73,37 @@
 </section>
     <!-- Section to include the top 6 product cards -->
     <div class="container">
-    <div class="row">
-    <div class="col-md-12">
-            <h2 class="top-seller-title">Top Seller</h2> <!-- Added title here -->
-        </div>
-        <div class="col-md-2">
-            <h2 style="font-size: 36px; font-weight: bold; margin-top: 20px; color: #228be6;">TOP</h2>
-            <p style="font-size: 24px; font-weight: bold; color: black;">PRODUCT</p>
-        </div>
-        <div class="col-md-10">
-            <div class="scrollable-card-section">
-                <div class="row">
-                    @foreach($topProducts->take(4) as $product)
-                        <div class="col-md-3">
-                            <div class="card mb-2">
-                                <a href="{{ route('products.show', $product->id) }}" class="text-decoration-none text-dark">
-                                <img src="{{ $product->photo_url }}" class="card-img-top product-img" alt="{{ $product->name }}">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $product->name }}</h5>
-                                    <p class="card-text">{{ $product->description }}</p>
-                                    <p class="card-text"><strong>${{ $product->price }}</strong></p>
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="top-seller-title">Top Seller</h2>
+            </div>
+            <div class="col-md-2">
+                <h2 style="font-size: 36px; font-weight: bold; margin-top: 20px; color: #228be6;">TOP</h2>
+                <p style="font-size: 24px; font-weight: bold; color: black;">PRODUCT</p>
+            </div>
+            <div class="col-md-10">
+                <div class="scrollable-card-section">
+                    <div class="row">
+                        @foreach($topProducts->take(4) as $product)
+                            <div class="col-md-3">
+                                <div class="card mb-2">
+                                    <a href="{{ route('products.show', $product->id) }}" class="text-decoration-none text-dark">
+                                        <img src="{{ $product->photo_url }}" class="card-img-top product-img" alt="{{ $product->name }}">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ $product->name }}</h5>
+                                            <p class="card-text">{{ $product->description }}</p>
+                                            <p class="card-text"><strong>${{ $product->price }}</strong></p>
+                                        </div>
+                                    </a>
                                 </div>
-                                </a>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    
     
     <!-- Center the "tes" button -->
     <div class="d-flex justify-content-center">
@@ -156,39 +159,79 @@
 </section>
 </div>
 <style>
-    body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-family: 'Overpass', sans-serif; letter-spacing: 0px; font-size: 17px; color: #8d8f90; font-weight: 400; line-height: 32px; background-color: #edefef; }
-h1, h2, h3, h4, h5, h6 { color: #25292a; margin: 0px 0px 10px 0px; font-family: 'Overpass', sans-serif; font-weight: 700; letter-spacing: -1px; line-height: 1; }
+    body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-family: 'Overpass', sans-serif;
+    letter-spacing: 0px;
+    font-size: 17px;
+    color: #8d8f90;
+    font-weight: 400;
+    line-height: 32px;
+    background-color: #edefef;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #25292a;
+    margin: 0 0 10px;
+    font-family: 'Overpass', sans-serif;
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1;
+}
+
 h1 { font-size: 34px; }
 h2 { font-size: 28px; line-height: 38px; }
 h3 { font-size: 22px; line-height: 32px; }
 h4 { font-size: 20px; }
 h5 { font-size: 17px; }
 h6 { font-size: 12px; }
-p { margin: 0 0 20px; line-height: 1.7; }
-p:last-child { margin: 0px; }
-ul, ol { }
-a { text-decoration: none; color: #8d8f90; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; transition: all 0.3s; }
-a:focus, a:hover { text-decoration: none; color: #f85759; }
-.page-header { 
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{asset('storage/photos/mart-japan.png')}}) no-repeat; 
-    position: relative; 
-    background-size: cover; 
+
+p {
+    margin: 0 0 20px;
+    line-height: 1.7;
 }
-.page-caption { padding-top: 170px; padding-bottom: 174px; }
-.page-title { font-size: 46px; line-height: 1; color: #fff; font-weight: 600; text-align: center; }
+p:last-child { margin: 0; }
+
+a {
+    text-decoration: none;
+    color: #8d8f90;
+    transition: all 0.3s;
+}
+a:focus, a:hover {
+    text-decoration: none;
+    color: #f85759;
+}
+
+.page-header {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url({{asset('storage/photos/mart-japan.png')}}) no-repeat;
+    position: relative;
+    background-size: cover;
+}
+.page-caption {
+    padding-top: 170px;
+    padding-bottom: 174px;
+}
+.page-title {
+    font-size: 46px;
+    line-height: 1;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+}
 
 .card-section { position: relative; bottom: 60px; }
 .card-block { padding: 80px; }
 .section-title { margin-bottom: 60px; }
 
 .top-seller-title {
-    font-size: 28px; /* Match this with your h2 styling */
+    font-size: 28px;
     font-weight: bold;
     color: #228be6;
-    margin-bottom: 20px;
-    text-align: center; /* Center the text */
-    width: 100%; /* Ensure it takes full width */
-    margin-top: 20px;
+    margin: 20px 0;
+    text-align: center;
+    width: 100%;
 }
 
 .scrollable-card-section {
@@ -197,53 +240,29 @@ a:focus, a:hover { text-decoration: none; color: #f85759; }
     padding: 20px 0;
     scrollbar-width: none;
 }
-
 .scrollable-card-section .card {
     display: inline-block;
     vertical-align: top;
-    margin-right: 20px; /* Adjust spacing between cards */
-}
-.top-seller-title {
-    font-size: 28px; /* Match this with your h2 styling */
-    font-weight: bold;
-    color: #228be6;
-    margin-bottom: 20px;
-    text-align: center; /* Center the text */
-    width: 100%; /* Ensure it takes full width */
-    margin-top: 20px;
+    margin-right: 20px;
+    width: 100%;
 }
 
-.scrollable-card-section {
-    overflow-x: auto;
-    white-space: nowrap;
-    padding: 20px 0;
-    scrollbar-width: none;
-}
-
-.scrollable-card-section .card {
-    display: inline-block;
-    vertical-align: top;
-    margin-right: 0px; /* Adjust spacing between cards */
-}
 .home-testimonial {
     padding: 50px 0;
     background-color: #f9f9f9;
 }
-
 .home-testimonial h3 {
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 10px;
     color: #333;
 }
-
 .home-testimonial h2 {
     font-size: 24px;
     font-weight: 300;
     margin-bottom: 40px;
     color: #555;
 }
-
 .home-testimonial-bottom {
     padding: 30px 0;
 }
@@ -257,7 +276,6 @@ a:focus, a:hover { text-decoration: none; color: #f85759; }
     margin-bottom: 30px;
     transition: transform 0.3s ease;
 }
-
 .tour-item:hover {
     transform: translateY(-10px);
 }
@@ -267,48 +285,36 @@ a:focus, a:hover { text-decoration: none; color: #f85759; }
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
-
 .tour-text {
     font-size: 16px;
     line-height: 1.6;
     color: #777;
     margin-bottom: 15px;
 }
-
 .tm-people {
     width: 80px;
     height: 80px;
     border-radius: 50%;
     object-fit: cover;
 }
-
 .link-name {
     font-size: 18px;
     font-weight: bold;
     color: #333;
     margin-bottom: 5px;
 }
-
 .link-position {
     font-size: 14px;
     color: #999;
 }
 
 @media (max-width: 768px) {
-    .home-testimonial h3 {
-        font-size: 24px;
-    }
-
-    .home-testimonial h2 {
-        font-size: 20px;
-    }
-
-    .tour-item {
-        margin-bottom: 20px;
-    }
-
-    .tour-text {
-        font-size: 14px;
+    .home-testimonial h3 { font-size: 24px; }
+    .home-testimonial h2 { font-size: 20px; }
+    .tour-item { margin-bottom: 20px; }
+    .tour-text { font-size: 14px; }
+    .card-img-top {
+        height: 150px; /* Adjust the height for smaller screens */
     }
 }
 
@@ -316,20 +322,17 @@ a:focus, a:hover { text-decoration: none; color: #f85759; }
     padding: 50px 0;
     background-color: #f5f5f5;
 }
-
 .about-section h2 {
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 20px;
     color: #333;
 }
-
 .about-section p {
     font-size: 17px;
     line-height: 1.7;
     color: #666;
 }
-
 .about-section img {
     width: 100%;
     height: auto;
@@ -337,48 +340,47 @@ a:focus, a:hover { text-decoration: none; color: #f85759; }
 }
 
 @media (max-width: 768px) {
-    .about-section h2 {
-        font-size: 26px;
-    }
-
-    .about-section p {
-        font-size: 15px;
-    }
+    .about-section h2 { font-size: 26px; }
+    .about-section p { font-size: 15px; }
 }
 
-    .card {
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    height: 100%; /* Ensure card takes full height */
+    display: flex;
+    flex-direction: column; /* Stack image and content vertically */
+}
+.card-body {
+    padding: 15px;
+    flex-grow: 1; /* Allow content to grow and align to bottom */
+}
+.card-img-top {
+    width: 100%;
+    height: 200px; /* Set a fixed height for uniformity */
+    object-fit: cover; /* Ensure image covers the entire area without distortion */
+}
 
-    .card {
-        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+.card:hover {
+    transform: scale(0.95);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+.product-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
 
-    .card:hover {
-        transform: scale(0.95); /* Shrink the card slightly on hover */
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
-    }
-
-    .product-img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-    }
-
-    .card-block.transparent-bg {
-    background-color: rgba(255, 255, 255, 0.5%); /* Makes the background transparent */
+.card-block.transparent-bg {
+    background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
     border-radius: 10px;
 }
-
 .card-block.transparent-bg .section-title h2,
 .card-block.transparent-bg .section-title p {
-    color: black; /* Sets the text color to black */
+    color: black;
 }
 
 .styled-button {
@@ -443,112 +445,23 @@ a:focus, a:hover { text-decoration: none; color: #f85759; }
 }
 
 .image-container {
-        position: relative;
-    }
-    .bg-image {
-        position: absolute;
-        top: 30px;
-        left: 176px;
-        z-index: 1;
-        width: 100%;
-        height: auto; /* Atur ini sesuai kebutuhan */
-        filter: grayscale(100%) brightness(0%) contrast(25%);
-    }
-    .main-image {
-        position: relative;
-        z-index: 2;
-        width: 100%;
-        height: auto; /* Atur ini sesuai kebutuhan */
-    }
-
-    .card-block.transparent-bg {
-    background-color: rgba(255, 255, 255, 0.5%); /* Makes the background transparent */
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
+    position: relative;
+}
+.bg-image {
+    position: absolute;
+    top: 30px;
+    left: 176px;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    filter: grayscale(100%) brightness(0%) contrast(25%);
+}
+.main-image {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: auto;
 }
 
-.card-block.transparent-bg .section-title h2,
-.card-block.transparent-bg .section-title p {
-    color: black; /* Sets the text color to black */
-}
-
-.styled-button {
-    --c: #228be6; /* Button color */
-    box-shadow: 0 0 0 .1em inset var(--c);
-    --_g: linear-gradient(var(--c) 0 0) no-repeat;
-    background: 
-        var(--_g) calc(var(--_p,0%) - 100%) 0%,
-        var(--_g) calc(200% - var(--_p,0%)) 0%,
-        var(--_g) calc(var(--_p,0%) - 100%) 100%,
-        var(--_g) calc(200% - var(--_p,0%)) 100%;
-    background-size: 50.5% calc(var(--_p,0%)/2 + .5%);
-    outline-offset: .1em;
-    transition: background-size .4s, background-position 0s .4s;
-    font-family: system-ui, sans-serif;
-    font-size: 1.4rem; /* Smaller font size */
-    cursor: pointer;
-    padding: .3em .8em; /* Further reduced padding */
-    font-weight: bold;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Centers text horizontally */
-    text-align: center; /* Centers text horizontally */
-    margin: 0 auto; /* Centers the button within its container */
-    border-radius: 12px; /* Slightly reduced border-radius for a more compact look */
-}
-
-.styled-button:hover {
-    --_p: 100%;
-    transition: background-position .4s, background-size 0s;
-}
-
-.styled-button:active {
-    box-shadow: 0 0 9e9q inset #0009;
-    background-color: var(--c);
-    color: #fff; /* Change text color to white when active */
-}
-
-.button-link {
-    color: black; /* Text color */
-    text-decoration: none; /* Removes underline from the link */
-    display: block;
-    width: 100%; /* Ensures link covers button */
-    height: 100%; /* Ensures link covers button */
-    line-height: 1.2; /* Adjust line-height to vertically center text */
-    font-size: 1rem; /* Adjust font size to fit the button */
-    transition: color 0.3s; /* Smooth transition for text color */
-}
-
-.styled-button:hover .button-link {
-    color: #fff; /* Change text color to white on hover */
-}
-
-.styled-button:active .button-link {
-    color: #fff; /* Ensure text color is white when active */
-}
-
-.btn {
-    border-radius: 10px;
-}
-
-.image-container {
-        position: relative;
-    }
-    .bg-image {
-        position: absolute;
-        top: 30px;
-        left: 176px;
-        z-index: 1;
-        width: 100%;
-        height: auto; /* Atur ini sesuai kebutuhan */
-        filter: grayscale(100%) brightness(0%) contrast(25%);
-    }
-    .main-image {
-        position: relative;
-        z-index: 2;
-        width: 100%;
-        height: auto; /* Atur ini sesuai kebutuhan */
-    }
 </style>
 @endsection

@@ -73,7 +73,7 @@
                         @csrf
                         <input type="hidden" name="id" value="{{ $product->id }}">
                         <div class="cart-icon-container position-absolute end-0 top-0 p-2">
-                            <button class="btn btn-light border-0">
+                            <button class="btn border-0">
                                 <i class="fas fa-shopping-cart"></i>
                             </button>
                         </div>
@@ -83,7 +83,7 @@
                 @endforeach
             </div>
             <div class="d-flex justify-content-center">
-                {{ $products->links('pagination::bootstrap-5') }}
+                {{ $products->links('pagination::bootstrap-4') }}
             </div>
         </div>
     </div>
@@ -170,7 +170,7 @@
 .cart-icon-container button:focus,
 .cart-icon-container button:active {
     outline: none; /* Remove outline */
-    box-shadow: none; /* Remove box shadow */
+    box-shadow: none; /* Remove box shadow */   
 }
 </style>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
